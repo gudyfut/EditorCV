@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "nome": "MURILO R. F. MONFERRARI",
+    "cargo": "CURRICULUM VITAE",
+    "telefone": "+55 (35) 999121807",
+    "email": "murilorfm@gmail.com"
+  },
+  "layout": {
+    "fontScale": 1,
+    "headingScale": 1,
+    "lineHeight": 1.35
+  },
+  "secoes": {
+    "sobre": {
+      "visivel": true,
+      "ordem": 1,
+      "titulo": "SOBRE",
+      "conteudo": "Estudante de Ciência da Computação na UNIFEI (6º período), com experiência em desenvolvimento backend, APIs REST e integração de sistemas. Já trabalhei com Python em produção e desenvolvi aplicações fullstack com deploy em AWS. Tenho facilidade para aprender novas tecnologias com rapidez e autonomia, e busco contribuir em times internacionais com proatividade e evolução constante."
+    },
+    "skills": {
+      "visivel": true,
+      "ordem": 2,
+      "titulo": "HABILIDADES",
+      "grupos": [
+        {
+          "label": "Linguagens",
+          "itens": ["C", "Python", "JavaScript", "TypeScript", "Node.js", "SQL", "HTML", "CSS"]
+        },
+        {
+          "label": "Ferramentas & Stack",
+          "itens": ["REST APIs", "Express", "React", "Next.js", "Prisma", "PostgreSQL", "Docker", "Git", "AWS"]
+        },
+        {
+          "label": "IA no Desenvolvimento",
+          "itens": [
+            "GitHub Copilot CLI",
+            "OpenCode com uso instruído e criterioso como suporte ao desenvolvimento"
+          ]
+        },
+        { "label": "Idiomas", "itens": ["Inglês fluente"] },
+        {
+          "label": "Conhecimentos Complementares",
+          "itens": ["Integração de sistemas", "Automação de processos", "Análise de dados", "Machine Learning"]
+        }
+      ]
+    },
+    "formacao": {
+      "visivel": true,
+      "ordem": 3,
+      "titulo": "FORMAÇÃO",
+      "itens": [
+        {
+          "titulo": "Bacharelado em Ciência da Computação",
+          "instituicao": "Universidade Federal de Itajubá (UNIFEI)",
+          "periodo": "01/2023 - 12/2026",
+          "status": "Matriculado Atualmente"
+        }
+      ]
+    },
+    "experiencia": {
+      "visivel": true,
+      "ordem": 4,
+      "titulo": "EXPERIÊNCIA",
+      "itens": [
+        {
+          "cargo": "Desenvolvedor Fullstack - Projeto Freelancer",
+          "empresa": "Consultoria para Fazendas de Café",
+          "bullets": [
+            "Arquitetura backend estruturada, API REST, PostgreSQL, AWS",
+            "Frontend React + Vite; backend Node.js + Express + Prisma"
+          ]
+        },
+        {
+          "cargo": "Programador Estagiário",
+          "empresa": "Golden Rastreamento",
+          "bullets": [
+            "Desenvolvimento de integrações de sistemas via API REST em Python, incluindo integração com chatbots e sistemas financeiros da empresa",
+            "Análise e tratamento de dados para automação de processos internos"
+          ]
+        }
+      ]
+    },
+    "competencias": {
+      "visivel": true,
+      "ordem": 5,
+      "titulo": "COMPETÊNCIAS",
+      "itens": [
+        "Aprendizado contínuo e rápida adaptação a novas tecnologias e contextos",
+        "Proatividade e autonomia no desenvolvimento de soluções e otimização de processos",
+        "Visão sistêmica e analítica na resolução de problemas",
+        "Comunicação clara e facilidade para colaborar com times multidisciplinares",
+        "Estabilidade emocional aliada à seriedade no cumprimento de responsabilidades",
+        "Determinação para agregar mais valor que o esperado"
+      ]
+    }
+  }
+}
