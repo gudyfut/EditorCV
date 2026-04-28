@@ -1,30 +1,10 @@
 # 📋 EditorCV — Editor de Currículo JSON Dinâmico
 
-Programa profissional para editar, personalizar e exportar currículos em tempo real, com suporte bilíngue (PT/EN) e múltiplos layouts.
-
-![Repository Status](https://img.shields.io/badge/status-active-success)
-![Last Commit](https://img.shields.io/github/last-commit/seu-usuario/EditorCV)
-![Languages](https://img.shields.io/badge/languages-Portuguese%20%26%20English-blue)
+Ferramenta pessoal para editar, personalizar e exportar currículos rapidamente em tempo real. Suporte bilíngue (português/inglês) e múltiplos ajustes de layout.
 
 ---
 
-## 📁 Estrutura do Repositório
-
-```
-EditorCV/
-├── FigmaResume/               # ⭐ Aplicação principal
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── README.md              # 📖 Documentação completa
-│
-├── LICENSE                    # Licença MIT
-└── README.md                  # Este arquivo
-```
-
----
-
-## 🚀 Quick Start
+## � Como Usar
 
 ### 1. Entre na pasta do projeto
 ```bash
@@ -136,35 +116,6 @@ JSON (resume-data.json)
 
 ---
 
-## 🎯 Casos de Uso
-
-### Para Profissionais
-- ✅ Criar currículo em português e inglês lado a lado
-- ✅ Ajustar visual para diferentes setores
-- ✅ Exportar para PDF sem deixar o navegador
-- ✅ Versionar currículo com Git (JSON é legível)
-
-### Para Recrutadores
-- ✅ Criar templates personalizados
-- ✅ Compartilhar JSON com candidatos
-- ✅ Coletar dados estruturados
-
-### Para Desenvolvedores
-- ✅ Aprender padrões React/TypeScript
-- ✅ Base para ferramentas customizadas
-- ✅ Exemplo de drag & drop com FLIP animation
-- ✅ Componentização Radix UI
-
----
-
-## 🔧 Requisitos do Sistema
-
-- **Node.js** 18 ou superior
-- **npm** 9 ou superior
-- Navegador moderno (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+)
-
----
-
 ## 📖 Estrutura de Dados
 
 Currículos são armazenados em **JSON** com esta estrutura:
@@ -187,26 +138,6 @@ Veja exemplos: `FigmaResume/public/resume-data.json` e `resume-data-en.json`
 
 ---
 
-## 🤝 Contribuindo
-
-Interessado em melhorar EditorCV?
-
-1. **Fork** este repositório
-2. **Crie uma branch** para sua feature: `git checkout -b feature/minha-feature`
-3. **Commit** suas mudanças: `git commit -m "Add minha-feature"`
-4. **Push** para a branch: `git push origin feature/minha-feature`
-5. **Abra um Pull Request**
-
-### Áreas com Potencial de Contribuição
-- 🎨 Novos templates de currículo
-- 🌍 Mais idiomas (além de PT e EN)
-- 📱 Melhorias de responsividade
-- 🔌 Integrações com APIs (LinkedIn, Indeed, etc)
-- 🧪 Mais testes unitários
-- 📖 Documentação adicional
-
----
-
 ## 📜 Licença
 
 Este projeto é distribuído sob a licença **MIT**.
@@ -221,44 +152,4 @@ Veja [FigmaResume/Attributions.md](./FigmaResume/Attributions.md) para detalhes 
 
 ---
 
-## 📞 Contato & Suporte
-
-### Issues e Sugestões
-- Abra uma [GitHub Issue](https://github.com/seu-usuario/EditorCV/issues)
-- Use templates de Issue para melhor rastreamento
-
-### Recursos Úteis
-- 📖 [React Documentation](https://react.dev)
-- 📖 [Vite Guide](https://vitejs.dev)
-- 📖 [Tailwind CSS](https://tailwindcss.com)
-- 📖 [Radix UI](https://www.radix-ui.com)
-- 📖 [dnd-kit](https://docs.dndkit.com)
-
----
-
-## 🎓 Aprendizados & Inspiração
-
-Este projeto foi inspirado por:
-- ✅ Dificuldade em encontrar ferramentas gratuitas para editar currículo
-- ✅ Necessidade de versionar currículo com Git
-- ✅ Vontade de aprender padrões modernos React/TypeScript
-- ✅ Interesse em UI/UX de aplicações de produtividade
-
-**Desenvolvido com ❤️ por desenvolvedores que entendem a importância de um bom currículo.**
-
----
-
-## 🚀 Roadmap Futuro
-
-- [ ] Suporte a tema claro/escuro
-- [ ] Mais templates de layout
-- [ ] Editor de cores customizadas
-- [ ] Sincronização com cloud (Firebase, Supabase)
-- [ ] Compartilhamento público de currículos
-- [ ] Análise de conteúdo (word count, keywords)
-- [ ] Integração com LinkedIn
-- [ ] Mobile app (React Native)
-
----
-
-**⭐ Se este projeto foi útil, considere dar uma star! ⭐**
+**Desenvolvido para uso pessoal — edição rápida e customização de currículos.**

@@ -1,36 +1,28 @@
 
 # 📋 EditorCV — Editor de Currículo Dinâmico
 
-Uma aplicação web moderna para editar e personalizar currículos de forma intuitiva, com pré-visualização em tempo real, suporte bilíngue (PT/EN) e exportação para PDF.
-
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Vite](https://img.shields.io/badge/built%20with-Vite-646CFF?logo=vite&logoColor=white)
-![React](https://img.shields.io/badge/powered%20by-React%2018-61dafb?logo=react)
-![TypeScript](https://img.shields.io/badge/typed%20with-TypeScript-3178c6?logo=typescript&logoColor=white)
-![Tailwind](https://img.shields.io/badge/styled%20with-Tailwind%20CSS-06b6d4?logo=tailwindcss)
+Aplicação para editar, customizar e exportar currículos rapidamente em tempo real, com pré-visualização em A4, suporte bilíngue (português/inglês) e exportação para PDF.
 
 ---
 
-## 🎯 Visão Geral
+## ✨ O que É
 
-**EditorCV** é um editor de currículo baseado em JSON que oferece:
+**EditorCV** permite editar currículos via formulário e visualizar em tempo real:
 
-- ✨ **Edição intuitiva em tempo real** — Painel duplo com formulário e pré-visualização sincronizados
-- 🎨 **Design profissional** — Layout A4 responsivo com múltiplas visualizações (Resume, ATS Resume, Figma Export)
-- 🌐 **Suporte bilíngue** — Edite em português e inglês com tradução automática de títulos de seções
-- 📊 **Controle total de layout** — Ajuste escala de fonte, títulos e altura de linha
-- 🔄 **Reordenação visual** — Arraste ou use setas para reorganizar módulos com animação FLIP
-- 📁 **Gerenciamento de arquivos** — Abra, salve e exporte JSON com suporte a File Picker API
-- 📄 **Exportação PDF** — Print ou PDF via navegador
-- 🎛️ **Personalização de módulos** — Edite nomes, visibilidade e ordem de cada seção
+- **Painel duplo** — Formulário de edição + pré-visualização A4 sincronizados
+- **Bilíngue** — Crie versões em português e inglês
+- **Layout customizável** — Ajuste escala, títulos, altura de linha
+- **Reordenação visual** — Arraste ou use setas para reorganizar seções
+- **Salve em JSON** — Dados portáveis para reutilização
+- **Exporte para PDF** — Imprima ou salve como PDF direto do navegador
 
 ---
 
 ## 🚀 Quick Start
 
 ### Pré-requisitos
-- **Node.js** 18+ 
-- **npm** 9+
+- Node.js 18+
+- npm 9+
 
 ### Instalação e Desenvolvimento
 
@@ -302,18 +294,7 @@ Suporta abertura/salvamento nativo de arquivos (Chrome, Edge, Firefox):
 
 ---
 
-## 🔍 Recursos Internos
 
-### Componentes UI Personalizados
-- `accordion.tsx` — Acordeões expansíveis
-- Diversos componentes Radix UI pré-configurados
-- Custom styling consistente com Tailwind
-
-### Utilitários
-- `utils.ts` — Helper functions (cn, classNames)
-- `types/resume.ts` — Type-safe resume data
-
----
 
 ## 📖 Guia de Desenvolvimento
 
@@ -391,41 +372,5 @@ Veja `Attributions.md` para detalhes completos.
 
 ---
 
-## 🤝 Contribuindo
-
-Sugestões de melhorias:
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
-
----
-
-## 📞 Suporte
-
-Para dúvidas ou issues:
-- Abra uma [GitHub Issue](https://github.com/seu-usuario/EditorCV/issues)
-- Consulte a documentação de tecnologias usadas:
-  - [React Docs](https://react.dev)
-  - [Vite Guide](https://vitejs.dev/guide/)
-  - [Tailwind CSS](https://tailwindcss.com/docs)
-
----
-
-## 🎓 Aprendizados
-
-Este projeto demonstra:
-- ✅ State management em React com hooks
-- ✅ TypeScript type-safe development
-- ✅ Drag & drop com dnd-kit e animações FLIP
-- ✅ CSS custom properties para escalabilidade
-- ✅ Componentes acessíveis com Radix UI
-- ✅ Build otimizado com Vite
-- ✅ Responsividade com Tailwind CSS
-- ✅ JSON schema validation e normalização
-
----
-
-**Desenvolvido com ❤️ usando React, TypeScript e Tailwind CSS.**
+**Desenvolvido para editar currículos de forma rápida e eficiente.**
   
