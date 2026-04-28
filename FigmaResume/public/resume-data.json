@@ -6,7 +6,7 @@
     "email": "murilorfm@gmail.com"
   },
   "layout": {
-    "fontScale": 1,
+    "fontScale": 1.2,
     "headingScale": 1,
     "lineHeight": 1.35
   },
@@ -24,11 +24,30 @@
       "grupos": [
         {
           "label": "Linguagens",
-          "itens": ["C", "Python", "JavaScript", "TypeScript", "Node.js", "SQL", "HTML", "CSS"]
+          "itens": [
+            "C",
+            "Python",
+            "JavaScript",
+            "TypeScript",
+            "Node.js",
+            "SQL",
+            "HTML",
+            "CSS"
+          ]
         },
         {
           "label": "Ferramentas & Stack",
-          "itens": ["REST APIs", "Express", "React", "Next.js", "Prisma", "PostgreSQL", "Docker", "Git", "AWS"]
+          "itens": [
+            "REST APIs",
+            "Express",
+            "React",
+            "Next.js",
+            "Prisma",
+            "PostgreSQL",
+            "Docker",
+            "Git",
+            "AWS"
+          ]
         },
         {
           "label": "IA no Desenvolvimento",
@@ -37,10 +56,20 @@
             "OpenCode com uso instruído e criterioso como suporte ao desenvolvimento"
           ]
         },
-        { "label": "Idiomas", "itens": ["Inglês fluente"] },
+        {
+          "label": "Idiomas",
+          "itens": [
+            "Inglês fluente"
+          ]
+        },
         {
           "label": "Conhecimentos Complementares",
-          "itens": ["Integração de sistemas", "Automação de processos", "Análise de dados", "Machine Learning"]
+          "itens": [
+            "Integração de sistemas",
+            "Automação de processos",
+            "Análise de dados",
+            "Machine Learning"
+          ]
         }
       ]
     },

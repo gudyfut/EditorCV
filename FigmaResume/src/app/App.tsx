@@ -116,7 +116,7 @@ const App: React.FC = () => {
 
       const widthRatio = (stageWidth - 4) / contentWidth;
       const heightRatio = (stageHeight - 4) / contentHeight;
-      const nextScale = Math.max(Math.min(Math.min(widthRatio, heightRatio), 1), 0.4);
+      const nextScale = Math.max(Math.min(Math.min(widthRatio, heightRatio) * 0.98, 1), 0.25);
 
       setPreviewScale((current) => (Math.abs(current - nextScale) < 0.005 ? current : nextScale));
     };
@@ -266,7 +266,7 @@ const App: React.FC = () => {
           </div>
           <div>
             <p className="app-kicker">EditorCV MVP</p>
-            <h1>Editor de Curriculo Dinamico</h1>
+            <h1>Editor de Currículo Dinâmico</h1>
           </div>
         </div>
 
@@ -276,13 +276,13 @@ const App: React.FC = () => {
         </div>
 
         <div className="toolbar-actions">
-          <button type="button" onClick={handleOpenJson}>
+          <button type="button" onClick={handleOpenJson} style={{ background: "#ffffff", color: "#1e293b", borderColor: "#cbd5e1" }}>
             <FolderOpen size={14} /> Abrir JSON
           </button>
-          <button type="button" onClick={handleSaveJson}>
+          <button type="button" onClick={handleSaveJson} style={{ background: "#eff6ff", color: "#1d4ed8", borderColor: "#bfdbfe" }}>
             <Save size={14} /> Salvar JSON
           </button>
-          <button type="button" onClick={() => window.print()}>
+          <button type="button" onClick={() => window.print()} style={{ background: "#0f172a", color: "#ffffff", borderColor: "#0f172a" }}>
             <Download size={14} /> Exportar PDF
           </button>
         </div>

@@ -1,6 +1,24 @@
-import React, { useState } from "react";
-import { ChevronUp, ChevronDown, Eye, EyeOff, Plus, X } from "lucide-react";
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { ChevronUp, ChevronDown, ChevronRight, Eye, EyeOff, Plus, X, Settings2, User, FileText, LayoutList, GripVertical } from "lucide-react";
 import { ResumeData } from "../types/resume";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface ResumeFormProps {
   data: ResumeData;
@@ -17,11 +35,212 @@ const SECTION_LABELS: Record<SectionKey, string> = {
   competencias: "Competências",
 };
 
+const getSectionTitle = (sectionKey: SectionKey, section: ResumeData["secoes"][SectionKey]) =>
+  section.titulo?.trim() || SECTION_LABELS[sectionKey];
+
+interface SortableOrderItemProps {
+  id: string;
+  sectionKey: SectionKey;
+  index: number;
+  label: string;
+  isVisible: boolean;
+  onToggleVisibility: () => void;
+  onMoveUp: () => void;
+  onMoveDown: () => void;
+  itemRef?: (node: HTMLElement | null) => void;
+}
+
+const SortableOrderItem: React.FC<SortableOrderItemProps> = ({
+  id,
+  sectionKey,
+  index,
+  label,
+  isVisible,
+  onToggleVisibility,
+  onMoveUp,
+  onMoveDown,
+  itemRef,
+}) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition: dndTransition,
+    isDragging,
+  } = useSortable({ id });
+
+  const mergedRef = useCallback(
+    (node: HTMLElement | null) => {
+      setNodeRef(node);
+      if (itemRef) itemRef(node);
+    },
+    [setNodeRef, itemRef],
+  );
+
+  return (
+    <article
+      ref={mergedRef}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition: dndTransition,
+        opacity: isDragging ? 0.92 : 1,
+        zIndex: isDragging ? 50 : 'auto',
+        position: 'relative' as const,
+        boxShadow: isDragging ? '0 12px 28px rgba(0,0,0,0.15)' : undefined,
+      }}
+      className={isDragging ? 'order-item is-dragging' : 'order-item'}
+    >
+      <span className="order-index">{index + 1}</span>
+
+      <div
+        {...attributes}
+        {...listeners}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#94a3b8',
+          cursor: 'grab',
+          padding: '4px 2px',
+          touchAction: 'none',
+        }}
+        title="Arrastar para reordenar"
+      >
+        <GripVertical size={18} />
+      </div>
+
+      <span className="order-title" style={{ flex: 1 }}>{label}</span>
+
+      <div className="order-item-actions">
+        <button
+          type="button"
+          className="cv-icon-btn"
+          title={isVisible ? "Ocultar seção" : "Mostrar seção"}
+          onClick={onToggleVisibility}
+        >
+          {isVisible ? <Eye size={15} /> : <EyeOff size={15} />}
+        </button>
+        <button type="button" className="cv-rail-arrow" title="Mover para cima" onClick={onMoveUp}>
+          <ChevronUp size={16} />
+        </button>
+        <button
+          type="button"
+          className="cv-rail-arrow"
+          title="Mover para baixo"
+          onClick={onMoveDown}
+        >
+          <ChevronDown size={16} />
+        </button>
+      </div>
+    </article>
+  );
+};
+
+interface CollapsibleItemProps {
+  title: string;
+  onRemove: () => void;
+  children: React.ReactNode;
+}
+
+const CollapsibleItem: React.FC<CollapsibleItemProps> = ({ title, onRemove, children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="item-card" style={{ marginBottom: '10px', borderRadius: '10px', overflow: 'hidden', border: '1px solid #cbd5e1' }}>
+      <div 
+        className="item-card-header" 
+        style={{ cursor: 'pointer', userSelect: 'none', padding: '14px 16px', background: isOpen ? '#f1f5f9' : '#ffffff', transition: 'background 0.2s', borderBottom: isOpen ? '1px solid #cbd5e1' : 'none' }}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1 }}>
+          {isOpen ? <ChevronDown size={18} className="text-blue-500" /> : <ChevronRight size={18} className="text-slate-400" />}
+          <h3 className="item-card-title" style={{ fontSize: '14px', color: isOpen ? '#0f172a' : '#475569', fontWeight: isOpen ? 600 : 500 }}>{title}</h3>
+        </div>
+        <button
+          type="button"
+          className="item-card-remove"
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemove();
+          }}
+          title="Remover item"
+        >
+          <X size={16} />
+        </button>
+      </div>
+      {isOpen && (
+        <div className="item-card-body" style={{ padding: '18px', background: '#ffffff' }}>
+          {children}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const ResumeForm: React.FC<ResumeFormProps> = ({ data, onDataChange }) => {
   const [draftInputs, setDraftInputs] = useState<Record<string, string>>({});
+  const itemRefs = useRef<Map<string, HTMLElement>>(new Map());
+  const pendingLayoutSnapshot = useRef<Map<string, number> | null>(null);
 
   const orderedSectionKeys = (Object.keys(data.secoes) as SectionKey[]).sort(
     (a, b) => data.secoes[a].ordem - data.secoes[b].ordem,
+  );
+  const orderedSectionKeySignature = orderedSectionKeys.join("|");
+
+  const capturePositions = useCallback(() => {
+    const map = new Map<string, number>();
+    for (const key of orderedSectionKeys) {
+      const el = itemRefs.current.get(key);
+      if (el) map.set(key, el.getBoundingClientRect().top);
+    }
+    return map;
+  }, [orderedSectionKeys]);
+
+  const animateFromPositions = useCallback(
+    (firstMap: Map<string, number>) => {
+      for (const key of orderedSectionKeys) {
+        const el = itemRefs.current.get(key);
+        const firstTop = firstMap.get(key);
+        if (!el || firstTop === undefined) continue;
+        const lastTop = el.getBoundingClientRect().top;
+        const delta = firstTop - lastTop;
+        if (Math.abs(delta) < 0.5) continue;
+
+        el.style.transition = 'none';
+        el.style.transform = `translateY(${delta}px)`;
+
+        requestAnimationFrame(() => {
+          el.style.transition = 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)';
+          el.style.transform = '';
+          const cleanup = () => {
+            el.style.transition = '';
+            el.style.transform = '';
+            el.removeEventListener('transitionend', cleanup);
+          };
+          el.addEventListener('transitionend', cleanup);
+        });
+      }
+    },
+    [orderedSectionKeys],
+  );
+
+  useLayoutEffect(() => {
+    const snapshot = pendingLayoutSnapshot.current;
+    if (!snapshot) {
+      return;
+    }
+
+    pendingLayoutSnapshot.current = null;
+    animateFromPositions(snapshot);
+  }, [animateFromPositions, orderedSectionKeySignature]);
+
+  const setItemRef = useCallback(
+    (id: string) => (node: HTMLElement | null) => {
+      if (node) itemRefs.current.set(id, node);
+      else itemRefs.current.delete(id);
+    },
+    [],
   );
 
   const parseInputItems = (raw: string): string[] =>
@@ -91,7 +310,22 @@ export const ResumeForm: React.FC<ResumeFormProps> = ({ data, onDataChange }) =>
     });
   };
 
+  const updateSectionTitle = (section: SectionKey, titulo: string) => {
+    onDataChange({
+      ...data,
+      secoes: {
+        ...data.secoes,
+        [section]: {
+          ...data.secoes[section],
+          titulo,
+        },
+      },
+    });
+  };
+
   const applySectionOrder = (nextOrder: SectionKey[]) => {
+    pendingLayoutSnapshot.current = capturePositions();
+
     const nextSecoes: ResumeData["secoes"] = {
       ...data.secoes,
     };
@@ -392,349 +626,420 @@ export const ResumeForm: React.FC<ResumeFormProps> = ({ data, onDataChange }) =>
   const renderSectionContent = (sectionKey: SectionKey) => {
     if (sectionKey === "sobre") {
       return (
-        <label>
-          Conteudo
-          <textarea value={data.secoes.sobre.conteudo} onChange={(event) => updateSobre(event.target.value)} />
-        </label>
+        <div className="content-section">
+          <div className="form-group">
+            <label>Resumo Profissional</label>
+            <textarea
+              className="form-control"
+              value={data.secoes.sobre.conteudo}
+              onChange={(event) => updateSobre(event.target.value)}
+              placeholder="Escreva um breve resumo sobre você..."
+            />
+          </div>
+        </div>
       );
     }
 
     if (sectionKey === "skills") {
       return (
-        <div className="stack-sm tight-stack dense-cards-grid skills-cards-grid">
+        <div className="content-section">
           {data.secoes.skills.grupos.map((group, groupIndex) => (
-            <div className="editor-block" key={`skill-group-${groupIndex}`}>
-              <button
-                type="button"
-                className="item-remove-btn"
-                title="Remover grupo"
-                onClick={() => removeSkillGroup(groupIndex)}
-              >
-                <X size={12} />
-              </button>
-
-              <div className="skills-top">
+            <CollapsibleItem 
+              key={`skill-group-${groupIndex}`} 
+              title={group.label || `Grupo de Skills ${groupIndex + 1}`}
+              onRemove={() => removeSkillGroup(groupIndex)}
+            >
+              <div className="form-group">
+                <label>Nome do Grupo (ex: Linguagens)</label>
                 <input
-                  className="group-title-input"
+                  className="form-control"
                   value={group.label}
                   onChange={(event) => updateSkillGroupLabel(groupIndex, event.target.value)}
                 />
-                <div className="chip-entry-row inline-chip-entry">
-                  <input
-                    value={draftInputs[`skills-${groupIndex}`] ?? ""}
-                    placeholder="item1, item2"
-                    onChange={(event) => setDraftValue(`skills-${groupIndex}`, event.target.value)}
-                    onKeyDown={(event) =>
-                      onDraftKeyDown(event, `skills-${groupIndex}`, (items) => addSkillItems(groupIndex, items))
-                    }
-                  />
-                </div>
               </div>
-
-              <div className="chip-box">
-                <div className="chip-list">
+              
+              <div className="form-group">
+                <label>Skills Adicionadas</label>
+                <div className="chips-container">
                   {group.itens.map((item, itemIndex) => (
-                    <span className="item-chip" key={`skill-item-${groupIndex}-${itemIndex}`}>
+                    <span className="chip" key={`skill-item-${groupIndex}-${itemIndex}`}>
                       {item}
                       <button type="button" onClick={() => removeSkillItem(groupIndex, itemIndex)}>
-                        <X size={11} />
+                        <X size={12} />
                       </button>
                     </span>
                   ))}
+                  {group.itens.length === 0 && <span style={{ color: '#94a3b8', fontSize: '12px' }}>Nenhuma skill adicionada.</span>}
                 </div>
               </div>
-            </div>
+
+              <div className="form-group">
+                <label>Adicionar nova skill (pressione Enter ou separe por vírgula)</label>
+                <input
+                  className="form-control"
+                  value={draftInputs[`skills-${groupIndex}`] ?? ""}
+                  placeholder="React, TypeScript..."
+                  onChange={(event) => setDraftValue(`skills-${groupIndex}`, event.target.value)}
+                  onKeyDown={(event) =>
+                    onDraftKeyDown(event, `skills-${groupIndex}`, (items) => addSkillItems(groupIndex, items))
+                  }
+                />
+              </div>
+            </CollapsibleItem>
           ))}
+          <button type="button" className="add-btn" onClick={addSkillGroup}>
+            <Plus size={16} /> Adicionar Grupo de Skills
+          </button>
         </div>
       );
     }
 
     if (sectionKey === "formacao") {
       return (
-        <div className="stack-sm tight-stack dense-cards-grid">
+        <div className="content-section">
           {data.secoes.formacao.itens.map((item, index) => (
-            <div className="editor-block" key={`formacao-${index}`}>
-              <button
-                type="button"
-                className="item-remove-btn"
-                title="Remover item"
-                onClick={() => removeFormacao(index)}
-              >
-                <X size={12} />
-              </button>
-
-              <div className="field-grid compact-grid">
-                <label>
-                  Titulo
+            <CollapsibleItem
+              key={`formacao-${index}`}
+              title={item.titulo || `Formação ${index + 1}`}
+              onRemove={() => removeFormacao(index)}
+            >
+              <div className="input-grid-2">
+                <div className="form-group">
+                  <label>Curso / Titulação</label>
                   <input
+                    className="form-control"
                     value={item.titulo}
                     onChange={(event) => updateFormacao(index, "titulo", event.target.value)}
                   />
-                </label>
-                <label>
-                  Instituicao
+                </div>
+                <div className="form-group">
+                  <label>Instituição</label>
                   <input
+                    className="form-control"
                     value={item.instituicao}
                     onChange={(event) => updateFormacao(index, "instituicao", event.target.value)}
                   />
-                </label>
-                <label>
-                  Periodo
+                </div>
+                <div className="form-group">
+                  <label>Período (ex: 2020 - 2024)</label>
                   <input
+                    className="form-control"
                     value={item.periodo}
                     onChange={(event) => updateFormacao(index, "periodo", event.target.value)}
                   />
-                </label>
-                <label>
-                  Status
+                </div>
+                <div className="form-group">
+                  <label>Status (ex: Concluído)</label>
                   <input
+                    className="form-control"
                     value={item.status}
                     onChange={(event) => updateFormacao(index, "status", event.target.value)}
                   />
-                </label>
+                </div>
               </div>
-            </div>
+            </CollapsibleItem>
           ))}
+          <button type="button" className="add-btn" onClick={addFormacao}>
+            <Plus size={16} /> Adicionar Formação
+          </button>
         </div>
       );
     }
 
     if (sectionKey === "experiencia") {
       return (
-        <div className="stack-sm tight-stack dense-cards-grid">
+        <div className="content-section">
           {data.secoes.experiencia.itens.map((item, index) => (
-            <div className="editor-block" key={`experiencia-${index}`}>
-              <button
-                type="button"
-                className="item-remove-btn"
-                title="Remover item"
-                onClick={() => removeExperiencia(index)}
-              >
-                <X size={12} />
-              </button>
-
-              <div className="field-grid compact-grid">
-                <label>
-                  Cargo
-                  <input value={item.cargo} onChange={(event) => updateExperiencia(index, "cargo", event.target.value)} />
-                </label>
-                <label>
-                  Empresa
+            <CollapsibleItem
+              key={`experiencia-${index}`}
+              title={item.cargo || `Experiência ${index + 1}`}
+              onRemove={() => removeExperiencia(index)}
+            >
+              <div className="input-grid-2">
+                <div className="form-group">
+                  <label>Cargo</label>
                   <input
+                    className="form-control"
+                    value={item.cargo}
+                    onChange={(event) => updateExperiencia(index, "cargo", event.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Empresa</label>
+                  <input
+                    className="form-control"
                     value={item.empresa}
                     onChange={(event) => updateExperiencia(index, "empresa", event.target.value)}
                   />
-                </label>
-              </div>
-
-              <div className="chip-box">
-                <div className="chip-list">
-                  {item.bullets.map((bullet, bulletIndex) => (
-                    <span className="item-chip" key={`bullet-${index}-${bulletIndex}`}>
-                      {bullet}
-                      <button type="button" onClick={() => removeBullet(index, bulletIndex)}>
-                        <X size={11} />
-                      </button>
-                    </span>
-                  ))}
+                </div>
+                <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                  <label>Período (ex: Jan 2021 - Presente)</label>
+                  <input
+                    className="form-control"
+                    value={item.periodo || ''}
+                    onChange={(event) => updateExperiencia(index, "periodo", event.target.value)}
+                  />
                 </div>
               </div>
 
-              <div className="chip-entry-row">
+              <div className="form-group">
+                <label>Atividades e Conquistas (Bullets)</label>
+                <div className="chips-container" style={{ flexDirection: 'column', gap: '8px', padding: '12px' }}>
+                  {item.bullets.map((bullet, bulletIndex) => (
+                    <div className="chip" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '6px 12px', borderRadius: '6px' }} key={`bullet-${index}-${bulletIndex}`}>
+                      <span style={{ flex: 1, whiteSpace: 'normal', wordBreak: 'break-word', lineHeight: '1.4' }}>{bullet}</span>
+                      <button type="button" style={{ padding: '4px' }} onClick={() => removeBullet(index, bulletIndex)}>
+                        <X size={14} />
+                      </button>
+                    </div>
+                  ))}
+                  {item.bullets.length === 0 && <span style={{ color: '#94a3b8', fontSize: '12px' }}>Nenhuma atividade adicionada.</span>}
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Nova atividade (pressione Enter)</label>
                 <input
+                  className="form-control"
                   value={draftInputs[`bullets-${index}`] ?? ""}
-                  placeholder="bullet 1, bullet 2"
+                  placeholder="Liderou equipe de 5 pessoas..."
                   onChange={(event) => setDraftValue(`bullets-${index}`, event.target.value)}
                   onKeyDown={(event) =>
                     onDraftKeyDown(event, `bullets-${index}`, (items) => addBulletItems(index, items))
                   }
                 />
               </div>
-            </div>
+            </CollapsibleItem>
           ))}
+          <button type="button" className="add-btn" onClick={addExperiencia}>
+            <Plus size={16} /> Adicionar Experiência
+          </button>
         </div>
       );
     }
 
     return (
-      <div className="stack-sm tight-stack dense-cards-grid competencias-cards-grid">
+      <div className="content-section">
         {data.secoes.competencias.itens.map((item, index) => (
-          <div className="editor-block" key={`competencia-${index}`}>
-            <button
-              type="button"
-              className="item-remove-btn"
-              title="Remover topico"
-              onClick={() => removeCompetencia(index)}
-            >
-              <X size={12} />
-            </button>
-
-            <label>
-              Topico {index + 1}
+          <CollapsibleItem
+            key={`competencia-${index}`}
+            title={item ? (item.length > 40 ? item.substring(0, 40) + '...' : item) : `Competência ${index + 1}`}
+            onRemove={() => removeCompetencia(index)}
+          >
+            <div className="form-group">
+              <label>Descrição</label>
               <textarea
+                className="form-control"
                 value={item}
-                placeholder="Descreva uma competencia"
+                placeholder="Descreva uma competência..."
                 onChange={(event) => updateCompetencia(index, event.target.value)}
               />
-            </label>
-          </div>
+            </div>
+          </CollapsibleItem>
         ))}
+        <button type="button" className="add-btn" onClick={addCompetenciaCard}>
+          <Plus size={16} /> Adicionar Competência
+        </button>
       </div>
     );
   };
 
   return (
     <div className="cv-editor-shell cv-editor-pro">
-      <section className="editor-session">
-        <header className="session-header">
-          <h2>Dados Pessoais</h2>
-          <p>Informações básicas exibidas no topo do currículo</p>
-        </header>
-
-        <div className="session-grid">
-          <label>
-            Nome
-            <input value={data.meta.nome} onChange={(e) => updateMeta("nome", e.target.value)} />
-          </label>
-          <label>
-            Título
-            <input value={data.meta.cargo} onChange={(e) => updateMeta("cargo", e.target.value)} />
-          </label>
-          <label>
-            Telefone
-            <input value={data.meta.telefone} onChange={(e) => updateMeta("telefone", e.target.value)} />
-          </label>
-          <label>
-            Email
-            <input value={data.meta.email} onChange={(e) => updateMeta("email", e.target.value)} />
-          </label>
-        </div>
-      </section>
-
-      <section className="editor-session">
-        <header className="session-header">
-          <h2>Ajustes Visuais</h2>
-          <p>Controle profissional de tipografia e ritmo de leitura</p>
-        </header>
-
-        <div className="layout-tuning-grid">
-          <label>
-            Escala Geral ({Math.round(data.layout.fontScale * 100)}%)
-            <input
-              type="range"
-              min={0.9}
-              max={1.35}
-              step={0.01}
-              value={data.layout.fontScale}
-              onChange={(event) => updateLayout("fontScale", Number(event.target.value))}
-            />
-          </label>
-          <label>
-            Escala de Títulos ({Math.round(data.layout.headingScale * 100)}%)
-            <input
-              type="range"
-              min={0.9}
-              max={1.4}
-              step={0.01}
-              value={data.layout.headingScale}
-              onChange={(event) => updateLayout("headingScale", Number(event.target.value))}
-            />
-          </label>
-          <label>
-            Altura de Linha ({data.layout.lineHeight.toFixed(2)})
-            <input
-              type="range"
-              min={1.15}
-              max={1.55}
-              step={0.01}
-              value={data.layout.lineHeight}
-              onChange={(event) => updateLayout("lineHeight", Number(event.target.value))}
-            />
-          </label>
-        </div>
-      </section>
-
-      <section className="editor-session">
-        <header className="session-header">
-          <h2>Ordem dos Módulos</h2>
-          <p>Reordene e controle visibilidade sem editar os módulos manualmente</p>
-        </header>
-
-        <div className="module-order-list">
-          {orderedSectionKeys.map((sectionKey, index) => (
-            <article className="order-item" key={`order-${sectionKey}`}>
-              <div className="order-item-main">
-                <span className="order-index">{index + 1}</span>
-                <span className="order-title">{SECTION_LABELS[sectionKey]}</span>
+      <Accordion type="single" collapsible defaultValue="dados-pessoais" className="w-full space-y-3">
+        <AccordionItem value="dados-pessoais" className="border-none">
+          <section className="editor-session">
+            <AccordionTrigger className="hover:no-underline py-0">
+              <header style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px', marginBottom: '0', padding: '4px 0', width: '100%' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '42px', height: '42px', borderRadius: '12px', background: '#eff6ff', color: '#3b82f6', flexShrink: 0 }}>
+      <User size={20} />
+    </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', textAlign: 'left', flex: 1 }}>
+      <h2 style={{ margin: 0, fontSize: '15px', fontWeight: 600, color: '#0f172a', textTransform: 'none', letterSpacing: 'normal' }}>Dados Pessoais</h2>
+      <p style={{ margin: 0, fontSize: '12px', color: '#64748b' }}>Informações básicas exibidas no topo do currículo</p>
+    </div>
+  </header>
+            </AccordionTrigger>
+            <AccordionContent className="pt-4 pb-0">
+              <div className="session-grid">
+                <label>
+                  Nome
+                  <input value={data.meta.nome} onChange={(e) => updateMeta("nome", e.target.value)} />
+                </label>
+                <label>
+                  Título
+                  <input value={data.meta.cargo} onChange={(e) => updateMeta("cargo", e.target.value)} />
+                </label>
+                <label>
+                  Telefone
+                  <input value={data.meta.telefone} onChange={(e) => updateMeta("telefone", e.target.value)} />
+                </label>
+                <label>
+                  Email
+                  <input value={data.meta.email} onChange={(e) => updateMeta("email", e.target.value)} />
+                </label>
               </div>
-
-              <div className="order-item-actions">
-                <button
-                  type="button"
-                  className="cv-icon-btn"
-                  title={data.secoes[sectionKey].visivel ? "Ocultar seção" : "Mostrar seção"}
-                  onClick={() => updateSectionVisibility(sectionKey, !data.secoes[sectionKey].visivel)}
-                >
-                  {data.secoes[sectionKey].visivel ? <Eye size={15} /> : <EyeOff size={15} />}
-                </button>
-                <button type="button" className="cv-rail-arrow" title="Mover para cima" onClick={() => moveSection(sectionKey, "up")}>
-                  <ChevronUp size={16} />
-                </button>
-                <button
-                  type="button"
-                  className="cv-rail-arrow"
-                  title="Mover para baixo"
-                  onClick={() => moveSection(sectionKey, "down")}
-                >
-                  <ChevronDown size={16} />
-                </button>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="editor-session">
-        <header className="session-header">
-          <h2>Conteúdo dos Módulos</h2>
-          <p>Edite cada bloco de conteúdo mantendo consistência e legibilidade</p>
-        </header>
-
-        {orderedSectionKeys.map((sectionKey) => (
-          <section className={`cv-editor-module ${data.secoes[sectionKey].visivel ? "" : "is-muted"}`} key={sectionKey}>
-            <div className="cv-editor-module-main">
-              <div className="cv-editor-module-header">
-                <h2>{SECTION_LABELS[sectionKey].toUpperCase()}</h2>
-
-                <div className="cv-editor-module-actions">
-                  {sectionKey === "skills" && (
-                    <button type="button" className="tiny-btn cv-accent-btn" onClick={addSkillGroup}>
-                      <Plus size={13} />
-                    </button>
-                  )}
-                  {sectionKey === "formacao" && (
-                    <button type="button" className="tiny-btn cv-accent-btn" onClick={addFormacao}>
-                      <Plus size={13} />
-                    </button>
-                  )}
-                  {sectionKey === "experiencia" && (
-                    <button type="button" className="tiny-btn cv-accent-btn" onClick={addExperiencia}>
-                      <Plus size={13} />
-                    </button>
-                  )}
-                  {sectionKey === "competencias" && (
-                    <button type="button" className="tiny-btn cv-accent-btn" onClick={addCompetenciaCard}>
-                      <Plus size={13} />
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {renderSectionContent(sectionKey)}
-            </div>
+            </AccordionContent>
           </section>
-        ))}
-      </section>
+        </AccordionItem>
+
+        <AccordionItem value="ajustes-visuais" className="border-none">
+          <section className="editor-session">
+            <AccordionTrigger className="hover:no-underline py-0">
+              <header style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px', marginBottom: '0', padding: '4px 0', width: '100%' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '42px', height: '42px', borderRadius: '12px', background: '#f5f3ff', color: '#8b5cf6', flexShrink: 0 }}>
+      <Settings2 size={20} />
+    </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', textAlign: 'left', flex: 1 }}>
+      <h2 style={{ margin: 0, fontSize: '15px', fontWeight: 600, color: '#0f172a', textTransform: 'none', letterSpacing: 'normal' }}>Ajustes Visuais</h2>
+      <p style={{ margin: 0, fontSize: '12px', color: '#64748b' }}>Controle profissional de tipografia e ritmo</p>
+    </div>
+  </header>
+            </AccordionTrigger>
+            <AccordionContent className="pt-4 pb-0">
+              <div className="layout-tuning-grid">
+                <label>
+                  Escala Geral ({Math.round(data.layout.fontScale * 100)}%)
+                  <input
+                    type="range"
+                    min={0.9}
+                    max={1.35}
+                    step={0.01}
+                    value={data.layout.fontScale}
+                    onChange={(event) => updateLayout("fontScale", Number(event.target.value))}
+                  />
+                </label>
+                <label>
+                  Escala de Títulos ({Math.round(data.layout.headingScale * 100)}%)
+                  <input
+                    type="range"
+                    min={0.9}
+                    max={1.4}
+                    step={0.01}
+                    value={data.layout.headingScale}
+                    onChange={(event) => updateLayout("headingScale", Number(event.target.value))}
+                  />
+                </label>
+                <label>
+                  Altura de Linha ({data.layout.lineHeight.toFixed(2)})
+                  <input
+                    type="range"
+                    min={1.15}
+                    max={1.55}
+                    step={0.01}
+                    value={data.layout.lineHeight}
+                    onChange={(event) => updateLayout("lineHeight", Number(event.target.value))}
+                  />
+                </label>
+              </div>
+            </AccordionContent>
+          </section>
+        </AccordionItem>
+
+        <AccordionItem value="ordem-modulos" className="border-none">
+          <section className="editor-session">
+            <AccordionTrigger className="hover:no-underline py-0">
+              <header style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px', marginBottom: '0', padding: '4px 0', width: '100%' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '42px', height: '42px', borderRadius: '12px', background: '#fffbeb', color: '#d97706', flexShrink: 0 }}>
+      <LayoutList size={20} />
+    </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', textAlign: 'left', flex: 1 }}>
+      <h2 style={{ margin: 0, fontSize: '15px', fontWeight: 600, color: '#0f172a', textTransform: 'none', letterSpacing: 'normal' }}>Ordem dos Módulos</h2>
+      <p style={{ margin: 0, fontSize: '12px', color: '#64748b' }}>Reordene e controle a visibilidade</p>
+    </div>
+  </header>
+            </AccordionTrigger>
+            <AccordionContent className="pt-4 pb-0">
+              <DndContext
+                sensors={useSensors(
+                  useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+                  useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+                )}
+                collisionDetection={closestCenter}
+                onDragEnd={(event: DragEndEvent) => {
+                  const { active, over } = event;
+                  if (!over || active.id === over.id) return;
+                  const oldIndex = orderedSectionKeys.indexOf(active.id as SectionKey);
+                  const newIndex = orderedSectionKeys.indexOf(over.id as SectionKey);
+                  if (oldIndex === -1 || newIndex === -1) return;
+                  applySectionOrder(arrayMove(orderedSectionKeys, oldIndex, newIndex));
+                }}
+              >
+                <SortableContext
+                  items={orderedSectionKeys}
+                  strategy={verticalListSortingStrategy}
+                >
+                  <div className="module-order-list">
+                    {orderedSectionKeys.map((sectionKey, index) => (
+                      <SortableOrderItem
+                        id={sectionKey}
+                        key={sectionKey}
+                        sectionKey={sectionKey}
+                        index={index}
+                        label={getSectionTitle(sectionKey, data.secoes[sectionKey])}
+                        isVisible={data.secoes[sectionKey].visivel}
+                        onToggleVisibility={() => updateSectionVisibility(sectionKey, !data.secoes[sectionKey].visivel)}
+                        onMoveUp={() => moveSection(sectionKey, "up")}
+                        onMoveDown={() => moveSection(sectionKey, "down")}
+                        itemRef={setItemRef(sectionKey)}
+                      />
+                    ))}
+                  </div>
+                </SortableContext>
+              </DndContext>
+            </AccordionContent>
+          </section>
+        </AccordionItem>
+
+        <AccordionItem value="conteudo-modulos" className="border-none">
+          <section className="editor-session">
+            <AccordionTrigger className="hover:no-underline py-0">
+              <header style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px', marginBottom: '0', padding: '4px 0', width: '100%' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '42px', height: '42px', borderRadius: '12px', background: '#ecfdf5', color: '#10b981', flexShrink: 0 }}>
+      <FileText size={20} />
+    </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', textAlign: 'left', flex: 1 }}>
+      <h2 style={{ margin: 0, fontSize: '15px', fontWeight: 600, color: '#0f172a', textTransform: 'none', letterSpacing: 'normal' }}>Conteúdo dos Módulos</h2>
+      <p style={{ margin: 0, fontSize: '12px', color: '#64748b' }}>Edite cada bloco de conteúdo em detalhes</p>
+    </div>
+  </header>
+            </AccordionTrigger>
+            <AccordionContent className="pt-4 pb-0">
+              <Accordion type="multiple" defaultValue={[]} className="space-y-2">
+                {orderedSectionKeys.map((sectionKey) => (
+                  <AccordionItem value={sectionKey} key={sectionKey} className="border-none">
+                    <section className={`cv-editor-module ${data.secoes[sectionKey].visivel ? "" : "is-muted"}`}>
+                      <div className="cv-editor-module-main">
+                        <AccordionTrigger className="hover:no-underline py-3 px-2" style={{ borderBottom: '1px solid #e2e8f0', background: '#f8fafc', borderRadius: '6px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#3b82f6' }}></div>
+      <h2 style={{ margin: 0, fontSize: '14px', fontWeight: 600, color: '#334155', textTransform: 'none', letterSpacing: 'normal' }}>
+        {getSectionTitle(sectionKey, data.secoes[sectionKey])}
+      </h2>
+    </div>
+  </AccordionTrigger>
+                        <AccordionContent className="pt-2 pb-0">
+                          <div className="form-group" style={{ marginBottom: '12px' }}>
+                            <label>Nome do módulo</label>
+                            <input
+                              className="form-control"
+                              value={data.secoes[sectionKey].titulo ?? ""}
+                              onChange={(event) => updateSectionTitle(sectionKey, event.target.value)}
+                              placeholder={SECTION_LABELS[sectionKey]}
+                            />
+                          </div>
+                          
+                          {renderSectionContent(sectionKey)}
+                        </AccordionContent>
+                      </div>
+                    </section>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </AccordionContent>
+          </section>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 };
