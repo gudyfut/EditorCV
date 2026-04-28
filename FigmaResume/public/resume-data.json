@@ -92,12 +92,13 @@
       "titulo": "EXPERIÊNCIA",
       "itens": [
         {
-          "cargo": "Desenvolvedor Fullstack - Projeto Freelancer",
+          "cargo": "Desenvolvedor Fullstack - Freelancer",
           "empresa": "Consultoria para Fazendas de Café",
           "bullets": [
             "Arquitetura backend estruturada, API REST, PostgreSQL, AWS",
             "Frontend React + Vite; backend Node.js + Express + Prisma"
-          ]
+          ],
+          "periodo": "Nov 2025 - Presente"
         },
         {
           "cargo": "Programador Estagiário",
@@ -105,7 +106,8 @@
           "bullets": [
             "Desenvolvimento de integrações de sistemas via API REST em Python, incluindo integração com chatbots e sistemas financeiros da empresa",
             "Análise e tratamento de dados para automação de processos internos"
-          ]
+          ],
+          "periodo": "Nov 2024 - Abr 2025"
         }
       ]
     },
