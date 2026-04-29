@@ -152,4 +152,13 @@ Veja [FigmaResume/Attributions.md](./FigmaResume/Attributions.md) para detalhes 
 
 ---
 
+## 🚀 Próximas Expansões
+
+- 🎨 **Customização completa do design** — Controle total sobre cores, fontes, espaçamentos e estilo visual do currículo
+- 📄 **Tipos diferentes de currículo** — Múltiplos templates e formatos para diferentes áreas e objetivos
+- 🌍 **Tradução automática para inglês** — Conversão automática do conteúdo para a versão em inglês com um clique
+- 🤖 **Cadastro de token AI + Chat integrado** — Conecte sua chave de API de IA e altere o currículo diretamente por chat, sem precisar editar campo a campo
+
+---
+
 **Desenvolvido para uso pessoal — edição rápida e customização de currículos.**
