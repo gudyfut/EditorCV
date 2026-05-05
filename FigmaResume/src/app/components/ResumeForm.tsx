@@ -554,6 +554,24 @@ export const ResumeForm: React.FC<ResumeFormProps> = ({ data, onDataChange }) =>
     });
   };
 
+  const updateBullet = (experienceIndex: number, bulletIndex: number, newValue: string) => {
+    onDataChange({
+      ...data,
+      secoes: {
+        ...data.secoes,
+        experiencia: {
+          ...data.secoes.experiencia,
+          itens: data.secoes.experiencia.itens.map((item, idx) =>
+            idx === experienceIndex ? {
+              ...item,
+              bullets: item.bullets.map((bullet, bIdx) => bIdx === bulletIndex ? newValue : bullet)
+            } : item,
+          ),
+        },
+      },
+    });
+  };
+
   const removeBullet = (experienceIndex: number, bulletIndex: number) => {
     onDataChange({
       ...data,
@@ -786,9 +804,14 @@ export const ResumeForm: React.FC<ResumeFormProps> = ({ data, onDataChange }) =>
                 <label>Atividades e Conquistas (Bullets)</label>
                 <div className="chips-container" style={{ flexDirection: 'column', gap: '8px', padding: '12px' }}>
                   {item.bullets.map((bullet, bulletIndex) => (
-                    <div className="chip" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '6px 12px', borderRadius: '6px' }} key={`bullet-${index}-${bulletIndex}`}>
-                      <span style={{ flex: 1, whiteSpace: 'normal', wordBreak: 'break-word', lineHeight: '1.4' }}>{bullet}</span>
-                      <button type="button" style={{ padding: '4px' }} onClick={() => removeBullet(index, bulletIndex)}>
+                    <div className="chip" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%', padding: '6px 12px', borderRadius: '6px' }} key={`bullet-${index}-${bulletIndex}`}>
+                      <textarea 
+                        className="form-control" 
+                        style={{ flex: 1, minHeight: '40px', marginRight: '8px', resize: 'vertical' }} 
+                        value={bullet} 
+                        onChange={(e) => updateBullet(index, bulletIndex, e.target.value)}
+                      />
+                      <button type="button" style={{ padding: '4px', marginTop: '4px' }} onClick={() => removeBullet(index, bulletIndex)}>
                         <X size={14} />
                       </button>
                     </div>

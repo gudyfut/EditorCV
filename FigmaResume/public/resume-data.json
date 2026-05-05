@@ -92,9 +92,10 @@
       "titulo": "EXPERIÊNCIA",
       "itens": [
         {
-          "cargo": "Desenvolvedor Fullstack - Freelancer",
-          "empresa": "Consultoria para Fazendas de Café",
+          "cargo": "Desenvolvedor Fullstack PJ",
+          "empresa": "SIMCafé",
           "bullets": [
+            "Desenvolvimento de sistema interno completo: ",
             "Arquitetura backend estruturada, API REST, PostgreSQL, AWS",
             "Frontend React + Vite; backend Node.js + Express + Prisma"
           ],
