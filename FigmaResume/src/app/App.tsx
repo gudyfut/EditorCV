@@ -41,6 +41,7 @@ const normalizeResumeData = (raw: ResumeData | Omit<ResumeData, "layout">): Resu
   return {
     ...candidate,
     layout: {
+      baseFontSize: layout?.baseFontSize ?? DEFAULT_RESUME_LAYOUT.baseFontSize,
       fontScale: layout?.fontScale ?? DEFAULT_RESUME_LAYOUT.fontScale,
       headingScale: layout?.headingScale ?? DEFAULT_RESUME_LAYOUT.headingScale,
       lineHeight: layout?.lineHeight ?? DEFAULT_RESUME_LAYOUT.lineHeight,
@@ -257,6 +258,11 @@ const App: React.FC = () => {
     setStatusMessage(`JSON baixado como ${sourceName}`);
   };
 
+  const handleExportPDF = () => {
+    if (!resumeData) return;
+    window.print();
+  };
+
   return (
     <div className="editor-page">
       <header className="app-toolbar">
@@ -282,7 +288,7 @@ const App: React.FC = () => {
           <button type="button" onClick={handleSaveJson} style={{ background: "#eff6ff", color: "#1d4ed8", borderColor: "#bfdbfe" }}>
             <Save size={14} /> Salvar JSON
           </button>
-          <button type="button" onClick={() => window.print()} style={{ background: "#0f172a", color: "#ffffff", borderColor: "#0f172a" }}>
+          <button type="button" onClick={handleExportPDF} style={{ background: "#0f172a", color: "#ffffff", borderColor: "#0f172a" }}>
             <Download size={14} /> Exportar PDF
           </button>
         </div>

@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "nome": "PEDRO LUIZ DE PAULA",
+    "cargo": "CURRICULUM VITAE",
+    "telefone": "(35) 99989-9501",
+    "email": "plp1064@hotmail.com"
+  },
+  "layout": {
+    "fontScale": 1,
+    "headingScale": 1,
+    "lineHeight": 1.35
+  },
+  "secoes": [
+    {
+      "id": "dados-pessoais",
+      "tipo": "text",
+      "visivel": true,
+      "ordem": 1,
+      "titulo": "DADOS PESSOAIS",
+      "conteudo": "Endereço: Rua das Piraíbas, 370, apto 02 – Bairro Conjunto Santa Branca – CEP 37559-551\nNaturalidade: Belo Horizonte – MG | Data de Nascimento: 10/06/1964\nEstado Civil: Divorciado"
+    },
+    {
+      "id": "formacao",
+      "tipo": "timeline",
+      "visivel": true,
+      "ordem": 2,
+      "titulo": "FORMAÇÃO ACADÊMICA",
+      "itens": [
+        {
+          "id": "form_0",
+          "titulo": "Curso Técnico de Mecânica Industrial",
+          "descricao": "CEFET – Centro Federal de Educação Tecnológica de Minas Gerais",
+          "data": "",
+          "local": "Belo Horizonte – MG"
+        },
+        {
+          "id": "form_1",
+          "titulo": "4º período de Pedagogia",
+          "descricao": "UNIS-MG – Centro Universitário do Sul de Minas",
+          "data": "",
+          "local": "Varginha – MG"
+        },
+        {
+          "id": "form_2",
+          "titulo": "2º período de Gestão de RH",
+          "descricao": "Univás – Universidade do Vale do Sapucaí",
+          "data": "",
+          "local": "Pouso Alegre – MG"
+        }
+      ]
+    },
+    {
+      "id": "competencias",
+      "tipo": "timeline",
+      "visivel": true,
+      "ordem": 3,
+      "titulo": "CURSOS DE APERFEIÇOAMENTO",
+      "itens": [
+        {
+          "id": "curso_0",
+          "titulo": "Treinamento em Conhecimento do Produto SCANIA",
+          "descricao": "Equipe Master Drive",
+          "data": "Nov 2013",
+          "local": "Guarulhos – SP"
+        },
+        {
+          "id": "curso_1",
+          "titulo": "Cursos de Aperfeiçoamento em Vendas de Caminhões MB",
+          "descricao": "(Qualificação internacional em vendas MB – C Sales)",
+          "data": "Jun 2005 – Atual",
+          "local": " Centro de Treinamento Mercedes-Benz"
+        },
+        {
+          "id": "curso_2",
+          "titulo": "Profissão: Vendedor – Competência Para o Sucesso em Vendas",
+          "descricao": "Palestrante: Dario Amorim",
+          "data": "Mar 2002",
+          "local": "Varginha – MG"
+        },
+        {
+          "id": "curso_3",
+          "titulo": "Soluções em Tempo de Crise",
+          "descricao": "Palestrante: Roberto Shinyashiki – Minas Centro",
+          "data": "Mar 2000",
+          "local": "Belo Horizonte – MG"
+        },
+        {
+          "id": "curso_4",
+          "titulo": "Atendimento no Varejo",
+          "descricao": "Ministrado pela Costa & Ramos – Associação Comercial de Guaxupé",
+          "data": "Jul 1998",
+          "local": "Guaxupé – MG"
+        },
+        {
+          "id": "curso_5",
+          "titulo": "Gerente de Vendas",
+          "descricao": "Central DPaschoal",
+          "data": "1º semestre 1997",
+          "local": "Valinhos – SP"
+        }
+      ]
+    },
+    {
+      "id": "experiencia",
+      "tipo": "timeline",
+      "visivel": true,
+      "ordem": 4,
+      "titulo": "EXPERIÊNCIA PROFISSIONAL",
+      "itens": [
+        {
+          "id": "exp_0",
+          "titulo": "Executivo Comercial (PJ – Contrato) – Mercado Livre de Energia",
+          "descricao": "Nova Energia",
+          "data": "Set 2023 – Atual",
+          "local": "São Paulo – SP"
+        },
+        {
+          "id": "exp_1",
+          "titulo": "Consultor Comercial",
+          "descricao": "Alba Energia Ltda",
+          "data": "Out 2020 – Ago 2023",
+          "local": "Pouso Alegre – MG"
+        },
+        {
+          "id": "exp_2",
+          "titulo": "Vendedor",
+          "descricao": "HABCON Empreendimentos Ltda",
+          "data": "Out 2016 – Ago 2020",
+          "local": "Pouso Alegre – MG"
+        },
+        {
+          "id": "exp_3",
+          "titulo": "Vendedor de Veículos – Caminhões Semi-pesados",
+          "descricao": "Codema Coml Imp Ltda – Concessionária SCANIA",
+          "data": "Out 2013 – Jan 2015",
+          "local": "Pouso Alegre – MG"
+        },
+        {
+          "id": "exp_4",
+          "titulo": "Vendedor de Veículos (Caminhões / Ônibus / Utilitários)",
+          "descricao": "Prodoeste Veículos e Serviços Ltda",
+          "data": "Mar 2008 – Ago 2013",
+          "local": "Pouso Alegre – MG"
+        },
+        {
+          "id": "exp_5",
+          "titulo": "Gerência e Vendas de Caminhões",
+          "descricao": "Manes Ltda – Concessionária Mercedes-Benz",
+          "data": "Jun 2005 – Mar 2008",
+          "local": "Três Corações – MG"
+        },
+        {
+          "id": "exp_6",
+          "titulo": "Consultor de Negócios Iveco",
+          "descricao": "Deva Veículos Ltda",
+          "data": "Fev 2004 – Mai 2005",
+          "local": "Belo Horizonte – MG"
+        },
+        {
+          "id": "exp_7",
+          "titulo": "Vendedor de Pneus Michelin",
+          "descricao": "Sociedade de Produtos do Oeste Ltda",
+          "data": "Jan 2003 – Fev 2004",
+          "local": "Varginha – MG"
+        },
+        {
+          "id": "exp_8",
+          "titulo": "Gerente Nacional de Vendas",
+          "descricao": "Steam Master Equipamentos Térmicos Ltda",
+          "data": "Jan 2001 – Nov 2002",
+          "local": "Varginha – MG"
+        },
+        {
+          "id": "exp_9",
+          "titulo": "Coordenador de Campo / Orientação e Treinamento de Pessoal",
+          "descricao": "AFISUL – Associação das Farmácias e Drogarias da Região do Sul de Minas",
+          "data": "Jul 1998 – Jan 2001",
+          "local": "Três Corações – MG"
+        },
+        {
+          "id": "exp_10",
+          "titulo": "Gerente de Loja",
+          "descricao": "DPaschoal Automotiva Ltda",
+          "data": "Jan 1997 – Jul 1998",
+          "local": "Bebedouro / Campinas – SP"
+        },
+        {
+          "id": "exp_11",
+          "titulo": "Vendas e Treinamento de Vendedores",
+          "descricao": "DPaschoal Automotiva Ltda",
+          "data": "Dez 1993 – Jan 1997",
+          "local": "Campinas – SP e Varginha – MG"
+        },
+        {
+          "id": "exp_12",
+          "titulo": "Encarregado Administrativo",
+          "descricao": "AMIS – Associação Mineira de Supermercados",
+          "data": "1992 – 1993",
+          "local": "Contagem – MG"
+        },
+        {
+          "id": "exp_13",
+          "titulo": "Representante de Assistência Técnica",
+          "descricao": "Fiat Automóveis S/A",
+          "data": "1986 – 1988",
+          "local": "Betim – MG / Brasília – DF"
+        }
+      ]
+    }
+  ]
+}

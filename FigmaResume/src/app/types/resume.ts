@@ -3,13 +3,26 @@ export interface ResumeMeta {
   cargo: string;
   telefone: string;
   email: string;
+  telefoneVisivel?: boolean;
+  emailVisivel?: boolean;
 }
 
-export interface SobreSection {
+export interface BaseSection {
+  id: string;
+  tipo: 'text' | 'list' | 'grouped_list' | 'timeline';
   visivel: boolean;
   ordem: number;
-  conteudo: string;
   titulo?: string;
+}
+
+export interface TextSection extends BaseSection {
+  tipo: 'text';
+  conteudo: string;
+}
+
+export interface ListSection extends BaseSection {
+  tipo: 'list';
+  itens: string[];
 }
 
 export interface SkillsGroup {
@@ -17,54 +30,37 @@ export interface SkillsGroup {
   itens: string[];
 }
 
-export interface SkillsSection {
-  visivel: boolean;
-  ordem: number;
+export interface GroupedListSection extends BaseSection {
+  tipo: 'grouped_list';
   grupos: SkillsGroup[];
-  titulo?: string;
 }
 
-export interface FormacaoItem {
+export interface TimelineItem {
+  id: string;
   titulo: string;
-  instituicao: string;
-  periodo: string;
-  status: string;
+  descricao?: string;
+  data?: string;
+  dataVisivel?: boolean;
+  local?: string;
+  localVisivel?: boolean;
 }
 
-export interface FormacaoSection {
-  visivel: boolean;
-  ordem: number;
-  itens: FormacaoItem[];
-  titulo?: string;
+export interface TimelineSection extends BaseSection {
+  tipo: 'timeline';
+  itens: TimelineItem[];
 }
 
-export interface ExperienciaItem {
-  cargo: string;
-  empresa: string;
-  bullets: string[];
-}
-
-export interface ExperienciaSection {
-  visivel: boolean;
-  ordem: number;
-  itens: ExperienciaItem[];
-  titulo?: string;
-}
-
-export interface CompetenciasSection {
-  visivel: boolean;
-  ordem: number;
-  itens: string[];
-  titulo?: string;
-}
+export type ResumeSection = TextSection | ListSection | GroupedListSection | TimelineSection;
 
 export interface ResumeLayout {
+  baseFontSize: number;
   fontScale: number;
   headingScale: number;
   lineHeight: number;
 }
 
 export const DEFAULT_RESUME_LAYOUT: ResumeLayout = {
+  baseFontSize: 12.5,
   fontScale: 1,
   headingScale: 1,
   lineHeight: 1.35,
@@ -73,11 +69,5 @@ export const DEFAULT_RESUME_LAYOUT: ResumeLayout = {
 export interface ResumeData {
   meta: ResumeMeta;
   layout: ResumeLayout;
-  secoes: {
-    sobre: SobreSection;
-    skills: SkillsSection;
-    formacao: FormacaoSection;
-    experiencia: ExperienciaSection;
-    competencias: CompetenciasSection;
-  };
+  secoes: ResumeSection[];
 }

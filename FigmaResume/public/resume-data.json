@@ -10,14 +10,18 @@
     "headingScale": 1,
     "lineHeight": 1.35
   },
-  "secoes": {
-    "sobre": {
+  "secoes": [
+    {
+      "id": "sobre",
+      "tipo": "text",
       "visivel": true,
       "ordem": 1,
       "titulo": "SOBRE",
       "conteudo": "Estudante de Ciência da Computação na UNIFEI (6º período), com experiência em desenvolvimento backend, APIs REST e integração de sistemas. Já trabalhei com Python em produção e desenvolvi aplicações fullstack com deploy em AWS. Tenho facilidade para aprender novas tecnologias com rapidez e autonomia, e busco contribuir em times internacionais com proatividade e evolução constante."
     },
-    "skills": {
+    {
+      "id": "skills",
+      "tipo": "grouped_list",
       "visivel": true,
       "ordem": 2,
       "titulo": "HABILIDADES",
@@ -73,46 +77,48 @@
         }
       ]
     },
-    "formacao": {
+    {
+      "id": "formacao",
+      "tipo": "timeline",
       "visivel": true,
       "ordem": 3,
       "titulo": "FORMAÇÃO",
       "itens": [
         {
+          "id": "form_0",
           "titulo": "Bacharelado em Ciência da Computação",
-          "instituicao": "Universidade Federal de Itajubá (UNIFEI)",
-          "periodo": "01/2023 - 12/2026",
-          "status": "Matriculado Atualmente"
+          "descricao": "Universidade Federal de Itajubá (UNIFEI)",
+          "data": "01/2023 - 12/2026 • Matriculado Atualmente",
+          "local": ""
         }
       ]
     },
-    "experiencia": {
+    {
+      "id": "experiencia",
+      "tipo": "timeline",
       "visivel": true,
       "ordem": 4,
       "titulo": "EXPERIÊNCIA",
       "itens": [
         {
-          "cargo": "Desenvolvedor Fullstack PJ",
-          "empresa": "SIMCafé",
-          "bullets": [
-            "Desenvolvimento de sistema interno completo: ",
-            "Arquitetura backend estruturada, API REST, PostgreSQL, AWS",
-            "Frontend React + Vite; backend Node.js + Express + Prisma"
-          ],
-          "periodo": "Nov 2025 - Presente"
+          "id": "exp_0",
+          "titulo": "Desenvolvedor Fullstack PJ",
+          "descricao": "SIMCafé — Desenvolvimento de sistema interno completo: arquitetura backend estruturada, API REST, PostgreSQL, AWS. Frontend React + Vite; backend Node.js + Express + Prisma.",
+          "data": "",
+          "local": ""
         },
         {
-          "cargo": "Programador Estagiário",
-          "empresa": "Golden Rastreamento",
-          "bullets": [
-            "Desenvolvimento de integrações de sistemas via API REST em Python, incluindo integração com chatbots e sistemas financeiros da empresa",
-            "Análise e tratamento de dados para automação de processos internos"
-          ],
-          "periodo": "Nov 2024 - Abr 2025"
+          "id": "exp_1",
+          "titulo": "Programador Estagiário",
+          "descricao": "Golden Rastreamento — Desenvolvimento de integrações de sistemas via API REST em Python, incluindo integração com chatbots e sistemas financeiros da empresa. Análise e tratamento de dados para automação de processos internos.",
+          "data": "",
+          "local": ""
         }
       ]
     },
-    "competencias": {
+    {
+      "id": "competencias",
+      "tipo": "list",
       "visivel": true,
       "ordem": 5,
       "titulo": "COMPETÊNCIAS",
@@ -125,5 +131,5 @@
         "Determinação para agregar mais valor que o esperado"
       ]
     }
-  }
+  ]
 }

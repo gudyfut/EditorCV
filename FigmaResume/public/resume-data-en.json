@@ -6,95 +6,130 @@
     "email": "murilorfm@gmail.com"
   },
   "layout": {
-    "fontScale": 1,
+    "fontScale": 1.2,
     "headingScale": 1,
     "lineHeight": 1.35
   },
-  "secoes": {
-    "sobre": {
+  "secoes": [
+    {
+      "id": "sobre",
+      "tipo": "text",
       "visivel": true,
       "ordem": 1,
       "titulo": "ABOUT",
-      "conteudo": "Computer Science student at UNIFEI (6th semester), experienced in backend development, REST APIs and systems integration. I have worked with Python in production and built fullstack applications deployed on AWS. I quickly and autonomously learn new technologies, and I seek to contribute to international teams with proactivity and continuous growth."
+      "conteudo": "Computer Science student at UNIFEI (6th semester), with experience in backend development, REST APIs, and system integration. I have worked with Python in production and developed fullstack applications deployed on AWS. I have an ease for learning new technologies quickly and autonomously, and I seek to contribute to international teams with proactivity and continuous evolution."
     },
-    "skills": {
+    {
+      "id": "skills",
+      "tipo": "grouped_list",
       "visivel": true,
       "ordem": 2,
       "titulo": "SKILLS",
       "grupos": [
         {
           "label": "Languages",
-          "itens": ["C", "Python", "JavaScript", "TypeScript", "Node.js", "SQL", "HTML", "CSS"]
+          "itens": [
+            "C",
+            "Python",
+            "JavaScript",
+            "TypeScript",
+            "Node.js",
+            "SQL",
+            "HTML",
+            "CSS"
+          ]
         },
         {
           "label": "Tools & Stack",
-          "itens": ["REST APIs", "Express", "React", "Next.js", "Prisma", "PostgreSQL", "Docker", "Git", "AWS"]
+          "itens": [
+            "REST APIs",
+            "Express",
+            "React",
+            "Next.js",
+            "Prisma",
+            "PostgreSQL",
+            "Docker",
+            "Git",
+            "AWS"
+          ]
         },
         {
           "label": "AI in Development",
           "itens": [
             "GitHub Copilot CLI",
-            "OpenCode used thoughtfully as support for development"
+            "OpenCode with instructed and careful use to support development"
           ]
         },
         {
-          "label": "Languages (Spoken)",
-          "itens": ["English (fluent)"]
+          "label": "Languages",
+          "itens": [
+            "Fluent English"
+          ]
         },
         {
-          "label": "Additional Knowledge",
-          "itens": ["Systems integration", "Process automation", "Data analysis", "Machine Learning"]
+          "label": "Complementary Knowledge",
+          "itens": [
+            "System integration",
+            "Process automation",
+            "Data analysis",
+            "Machine Learning"
+          ]
         }
       ]
     },
-    "formacao": {
+    {
+      "id": "formacao",
+      "tipo": "timeline",
       "visivel": true,
       "ordem": 3,
       "titulo": "EDUCATION",
       "itens": [
         {
-          "titulo": "Bachelor's Degree in Computer Science",
-          "instituicao": "Federal University of Itajubá (UNIFEI)",
-          "periodo": "01/2023 - 12/2026",
-          "status": "Currently Enrolled"
+          "id": "form_0",
+          "titulo": "Bachelor of Computer Science",
+          "descricao": "Federal University of Itajubá (UNIFEI)",
+          "data": "01/2023 - 12/2026 • Currently Enrolled",
+          "local": ""
         }
       ]
     },
-    "experiencia": {
+    {
+      "id": "experiencia",
+      "tipo": "timeline",
       "visivel": true,
       "ordem": 4,
       "titulo": "EXPERIENCE",
       "itens": [
         {
-          "cargo": "Fullstack Developer - Freelance Project",
-          "empresa": "Consulting for Coffee Farms",
-          "bullets": [
-            "Structured backend architecture, REST API, PostgreSQL, AWS",
-            "Frontend React + Vite; backend Node.js + Express + Prisma"
-          ]
+          "id": "exp_0",
+          "titulo": "Fullstack Developer (Contractor)",
+          "descricao": "SIMCafé — Development of a complete internal system: structured backend architecture, REST API, PostgreSQL, AWS. React + Vite frontend; Node.js + Express + Prisma backend.",
+          "data": "",
+          "local": ""
         },
         {
-          "cargo": "Programmer Intern",
-          "empresa": "Golden Rastreamento",
-          "bullets": [
-            "Developed system integrations via REST APIs in Python, including integration with chatbots and the company's financial systems",
-            "Data analysis and processing for automation of internal processes"
-          ]
+          "id": "exp_1",
+          "titulo": "Software Engineering Intern",
+          "descricao": "Golden Rastreamento — Development of system integrations via REST APIs in Python, including integration with chatbots and internal financial systems. Data analysis and processing for internal process automation.",
+          "data": "",
+          "local": ""
         }
       ]
     },
-    "competencias": {
+    {
+      "id": "competencias",
+      "tipo": "list",
       "visivel": true,
       "ordem": 5,
       "titulo": "COMPETENCIES",
       "itens": [
-        "Continuous learning and rapid adaptation to new technologies and contexts",
+        "Continuous learning and quick adaptation to new technologies and contexts",
         "Proactivity and autonomy in developing solutions and optimizing processes",
-        "Systemic and analytical mindset for problem solving",
-        "Clear communication and ease collaborating with multidisciplinary teams",
+        "Systemic and analytical vision for problem-solving",
+        "Clear communication and ease of collaborating with multidisciplinary teams",
         "Emotional stability combined with seriousness in fulfilling responsibilities",
         "Determination to add more value than expected"
       ]
     }
-  }
+  ]
 }

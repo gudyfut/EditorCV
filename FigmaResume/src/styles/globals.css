@@ -1037,6 +1037,21 @@ body,
   padding-left: 16px;
 }
 
+ul.resume-topic-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+ul.resume-topic-list li {
+  margin-bottom: 6px;
+  line-height: 1.45;
+}
+
+ul.resume-topic-list li:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 1200px) {
   .editor-layout {
     grid-template-columns: 1fr;
@@ -1081,13 +1096,27 @@ body,
   }
 
   .resume-paper {
-    width: 100%;
-    min-height: auto;
-    padding: 18px;
+    width: auto;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.45;
+    background-image: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 
 @media print {
+  html, body, #root, .editor-page, .editor-layout, .preview-panel, .cv-editor-shell, .app-container {
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+    position: static !important;
+  }
+
   .form-panel {
     display: none !important;
   }
@@ -1123,35 +1152,50 @@ body,
   }
 
   .resume-paper {
-    width: 210mm;
-    min-height: 297mm;
-    border: none;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: auto;
+    border: 14mm solid #ffffff !important;
     box-shadow: none;
-    padding: 14mm;
+    padding: 0 !important;
     margin: 0;
-    font-size: 12.5px;
-    line-height: 1.45;
+    background-image: none;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 
-  .resume-header h1 {
-    font-size: 30px;
+  .resume-header {
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   .resume-name {
-    font-size: 14.5px;
+    page-break-after: avoid;
+    break-after: avoid;
   }
 
-  .resume-contact,
-  .resume-section p,
-  .resume-section li {
-    font-size: 12.5px;
-    line-height: 1.45;
+  .resume-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   .resume-section h2 {
-    font-size: 12.5px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .stack-md > div,
+  .content-section > div,
+  .item-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  ul.resume-topic-list > li {
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   @page {
@@ -1354,26 +1398,26 @@ body,
   --resume-font-scale: 1;
   --resume-heading-scale: 1;
   --resume-line-height: 1.35;
-  font-size: calc(12.5px * var(--resume-font-scale));
+  font-size: calc(var(--resume-base-font-size, 12.5px) * var(--resume-font-scale));
   line-height: var(--resume-line-height);
 }
 
 .resume-header h1 {
-  font-size: calc(30px * var(--resume-font-scale) * var(--resume-heading-scale));
+  font-size: calc(var(--resume-base-font-size, 12.5px) * 2.4 * var(--resume-font-scale) * var(--resume-heading-scale));
 }
 
 .resume-name {
-  font-size: calc(14.5px * var(--resume-font-scale) * var(--resume-heading-scale));
+  font-size: calc(var(--resume-base-font-size, 12.5px) * 1.16 * var(--resume-font-scale) * var(--resume-heading-scale));
 }
 
 .resume-section h2 {
-  font-size: calc(12.5px * var(--resume-font-scale) * var(--resume-heading-scale));
+  font-size: calc(var(--resume-base-font-size, 12.5px) * var(--resume-font-scale) * var(--resume-heading-scale));
 }
 
 .resume-contact,
 .resume-section p,
 .resume-section li {
-  font-size: calc(12.5px * var(--resume-font-scale));
+  font-size: calc(var(--resume-base-font-size, 12.5px) * var(--resume-font-scale));
   line-height: var(--resume-line-height);
 }
 
@@ -1595,12 +1639,12 @@ textarea.form-control {
 @media screen {
   .resume-paper {
     width: 210mm;
-    height: 297mm;
-    min-height: 0;
+    min-height: 297mm;
+    height: auto;
     padding: 14mm;
     margin: 0;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
+    overflow: visible;
   }
 }
 
