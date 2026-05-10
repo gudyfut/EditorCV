@@ -86,7 +86,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
                         <div style={{ margin: 0, display: "flex", flexDirection: "column" }}>
                           <strong>{item.titulo || <span style={{ color: "#d1d5db" }}>Título/Cargo</span>}</strong>
                           {item.descricao?.trim() ? (
-                            <span style={{ fontSize: "0.95em", color: "#374151" }}>
+                            <span style={{ fontSize: "0.95em", color: "#374151", whiteSpace: "pre-line" }}>
                               {item.descricao}
                             </span>
                           ) : null}

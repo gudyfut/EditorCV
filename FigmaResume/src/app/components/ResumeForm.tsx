@@ -260,7 +260,7 @@ export const ResumeForm: React.FC<ResumeFormProps> = ({ data, onDataChange }) =>
               updateSection(section.id, { itens: newItens });
             }}>
               <div className="form-group"><label>Título</label><input className="form-control" value={item.titulo} onChange={e => { const newItens = [...(section as any).itens]; newItens[index].titulo = e.target.value; updateSection(section.id, { itens: newItens }); }} /></div>
-              <div className="form-group"><label>Descrição</label><input className="form-control" value={item.descricao || ""} onChange={e => { const newItens = [...(section as any).itens]; newItens[index].descricao = e.target.value; updateSection(section.id, { itens: newItens }); }} /></div>
+              <div className="form-group"><label>Descrição</label><textarea className="form-control" rows={3} value={item.descricao || ""} onChange={e => { const newItens = [...(section as any).itens]; newItens[index].descricao = e.target.value; updateSection(section.id, { itens: newItens }); }} /></div>
               <div className="input-grid-2">
                 <div className="form-group">
                   <label>Data / Período / Status</label>

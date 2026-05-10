@@ -6,8 +6,9 @@
     "email": "murilorfm@gmail.com"
   },
   "layout": {
+    "baseFontSize": 12.5,
     "fontScale": 1.2,
-    "headingScale": 1,
+    "headingScale": 1.15,
     "lineHeight": 1.35
   },
   "secoes": [
@@ -29,14 +30,14 @@
         {
           "label": "Linguagens",
           "itens": [
-            "C",
             "Python",
             "JavaScript",
             "TypeScript",
             "Node.js",
             "SQL",
             "HTML",
-            "CSS"
+            "CSS",
+            "C"
           ]
         },
         {
@@ -103,15 +104,15 @@
         {
           "id": "exp_0",
           "titulo": "Desenvolvedor Fullstack PJ",
-          "descricao": "SIMCafé — Desenvolvimento de sistema interno completo: arquitetura backend estruturada, API REST, PostgreSQL, AWS. Frontend React + Vite; backend Node.js + Express + Prisma.",
-          "data": "",
+          "descricao": "SIMCafé \nDesenvolvimento de sistema interno completo: arquitetura backend estruturada, API REST, PostgreSQL, AWS. Frontend React + Vite; backend Node.js + Express + Prisma.",
+          "data": "11/2025 - Presente",
           "local": ""
         },
         {
           "id": "exp_1",
           "titulo": "Programador Estagiário",
-          "descricao": "Golden Rastreamento — Desenvolvimento de integrações de sistemas via API REST em Python, incluindo integração com chatbots e sistemas financeiros da empresa. Análise e tratamento de dados para automação de processos internos.",
-          "data": "",
+          "descricao": "Golden Rastreamento \nDesenvolvimento de integrações de sistemas via API REST em Python, incluindo integração com chatbots e sistemas financeiros da empresa. Análise e tratamento de dados para automação de processos internos.",
+          "data": "11/2024 - 04/2025",
           "local": ""
         }
       ]
