@@ -32,7 +32,7 @@ type PickerWindow = Window & {
   }) => Promise<JsonFileHandle>;
 };
 
-const DEFAULT_JSON_PATH = "/resume-data.json";
+const DEFAULT_JSON_PATH = "/resumes/resume-data.json";
 
 const normalizeResumeData = (raw: ResumeData | Omit<ResumeData, "layout">): ResumeData => {
   const candidate = raw as ResumeData;

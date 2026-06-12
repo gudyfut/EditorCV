@@ -6,7 +6,7 @@
     "email": "murilorfm@gmail.com",
     "github": "github.com/gudyfut",
     "githubTexto": "gudyfut",
-    "linkedin": "linkedin.com/in/murilormf",
+    "linkedin": "www.linkedin.com/in/murilo-monferrari",
     "linkedinTexto": "Murilo Monferrari"
   },
   "layout": {
@@ -22,7 +22,7 @@
       "visivel": true,
       "ordem": 1,
       "titulo": "SOBRE",
-      "conteudo": "Estudante de Ciência da Computação na UNIFEI (6º período), com experiência em desenvolvimento backend, APIs REST e integração de sistemas. Já trabalhei com Python em produção e desenvolvi aplicações fullstack com deploy em AWS. Tenho facilidade para aprender novas tecnologias com rapidez e autonomia, e busco contribuir em times internacionais com proatividade e evolução constante."
+      "conteudo": "Estudante de Ciência da Computação na UNIFEI (7º período), com experiência em desenvolvimento backend, APIs REST e integração de sistemas. Já trabalhei com Python em produção e desenvolvi aplicações fullstack com deploy em AWS. Tenho facilidade para aprender novas tecnologias com rapidez e autonomia, e busco contribuir em times internacionais com proatividade e evolução constante."
     },
     {
       "id": "skills",
@@ -107,8 +107,8 @@
       "itens": [
         {
           "id": "exp_0",
-          "titulo": "Desenvolvedor Fullstack PJ",
-          "descricao": "SIMCafé \nDesenvolvimento de sistema interno completo: arquitetura backend estruturada, API REST, PostgreSQL, AWS. Frontend React + Vite; backend Node.js + Express + Prisma.",
+          "titulo": "Desenvolvedor Fullstack (Contractor)",
+          "descricao": "SIMCafé\nDesenvolvimento de sistema interno completo de inserção e analise de dados de fazendas de café\nFrontend React + Vite; Backend Node.js + Express + Prisma; PostgreSQL, AWS",
           "data": "11/2025 - Presente",
           "local": ""
         },
@@ -131,9 +131,7 @@
         "Aprendizado contínuo e rápida adaptação a novas tecnologias e contextos",
         "Proatividade e autonomia no desenvolvimento de soluções e otimização de processos",
         "Visão sistêmica e analítica na resolução de problemas",
-        "Comunicação clara e facilidade para colaborar com times multidisciplinares",
-        "Estabilidade emocional aliada à seriedade no cumprimento de responsabilidades",
-        "Determinação para agregar mais valor que o esperado"
+        "Comunicação clara e facilidade para colaborar com times multidisciplinares"
       ]
     }
   ]
