@@ -320,7 +320,7 @@ export const ResumeForm: React.FC<ResumeFormProps> = ({ data, onDataChange }) =>
             <AccordionContent>
               <div className="session-grid">
                 <label>Nome<input value={data.meta.nome} onChange={e => updateMeta("nome", e.target.value)} /></label>
-                <label>Cargo / Título do Currículo<input value={data.meta.cargo} onChange={e => updateMeta("cargo", e.target.value)} /></label>
+                <label>Cargo / Título<input value={data.meta.cargo} onChange={e => updateMeta("cargo", e.target.value)} /></label>
                 <label>Telefone
                   <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                     <input value={data.meta.telefone} onChange={e => updateMeta("telefone", e.target.value)} style={{ flex: 1 }} />
@@ -336,6 +336,24 @@ export const ResumeForm: React.FC<ResumeFormProps> = ({ data, onDataChange }) =>
                       {data.meta.emailVisivel === false ? <EyeOff size={15} /> : <Eye size={15} />}
                     </button>
                   </div>
+                </label>
+                <label>GitHub
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <input value={data.meta.github || ""} onChange={e => updateMeta("github", e.target.value)} placeholder="URL (link)" style={{ flex: 1 }} />
+                    <button type="button" className="cv-icon-btn" onClick={() => updateMeta("githubVisivel", data.meta.githubVisivel === false ? true : false)}>
+                      {data.meta.githubVisivel === false ? <EyeOff size={15} /> : <Eye size={15} />}
+                    </button>
+                  </div>
+                  <input value={data.meta.githubTexto || ""} onChange={e => updateMeta("githubTexto", e.target.value)} placeholder="Texto exibido no PDF" style={{ marginTop: '4px' }} />
+                </label>
+                <label>LinkedIn
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <input value={data.meta.linkedin || ""} onChange={e => updateMeta("linkedin", e.target.value)} placeholder="URL (link)" style={{ flex: 1 }} />
+                    <button type="button" className="cv-icon-btn" onClick={() => updateMeta("linkedinVisivel", data.meta.linkedinVisivel === false ? true : false)}>
+                      {data.meta.linkedinVisivel === false ? <EyeOff size={15} /> : <Eye size={15} />}
+                    </button>
+                  </div>
+                  <input value={data.meta.linkedinTexto || ""} onChange={e => updateMeta("linkedinTexto", e.target.value)} placeholder="Texto exibido no PDF" style={{ marginTop: '4px' }} />
                 </label>
               </div>
             </AccordionContent>

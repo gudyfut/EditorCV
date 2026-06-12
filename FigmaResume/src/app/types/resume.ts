@@ -3,8 +3,14 @@ export interface ResumeMeta {
   cargo: string;
   telefone: string;
   email: string;
+  github: string;
+  githubTexto: string;
+  linkedin: string;
+  linkedinTexto: string;
   telefoneVisivel?: boolean;
   emailVisivel?: boolean;
+  githubVisivel?: boolean;
+  linkedinVisivel?: boolean;
 }
 
 export interface BaseSection {

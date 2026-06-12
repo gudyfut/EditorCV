@@ -1,9 +1,13 @@
 {
   "meta": {
     "nome": "MURILO R. F. MONFERRARI",
-    "cargo": "CURRICULUM VITAE",
+    "cargo": "Estudante de Ciência da Computação",
     "telefone": "+55 (35) 999121807",
-    "email": "murilorfm@gmail.com"
+    "email": "murilorfm@gmail.com",
+    "github": "github.com/gudyfut",
+    "githubTexto": "gudyfut",
+    "linkedin": "linkedin.com/in/murilormf",
+    "linkedinTexto": "Murilo Monferrari"
   },
   "layout": {
     "baseFontSize": 12.5,

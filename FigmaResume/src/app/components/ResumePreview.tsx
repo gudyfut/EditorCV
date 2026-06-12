@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Github, Linkedin } from "lucide-react";
 import { ResumeData, ResumeSection } from "../types/resume";
 
 interface ResumePreviewProps {
@@ -24,8 +24,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
       }
     >
       <header className="resume-header">
-        <h1 style={{ color: "var(--accent-color, #0f172a)" }}>{data.meta.cargo || <span style={{ color: "#d1d5db" }}>Cargo / Profisso</span>}</h1>
-        <p className="resume-name">{data.meta.nome.toUpperCase() || <span style={{ color: "#d1d5db", textTransform: "none" }}>Seu Nome Completo</span>}</p>
+        <h1 style={{ color: "var(--accent-color, #0f172a)" }}>{data.meta.nome.toUpperCase() || <span style={{ color: "#d1d5db", textTransform: "none" }}>Seu Nome Completo</span>}</h1>
         <hr style={{ borderColor: "var(--accent-color, #0f172a)" }} />
         <div className="resume-contact">
           {(data.meta.telefoneVisivel !== false && data.meta.telefone?.trim()) ? (
@@ -37,9 +36,25 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
             <span className="divider" style={{ color: "var(--accent-color, #0f172a)" }}>|</span>
           ) : null}
           {(data.meta.emailVisivel !== false && data.meta.email?.trim()) ? (
-            <span>
-              <Mail size={12} style={{ color: "var(--accent-color, #0f172a)" }} /> {data.meta.email}
-            </span>
+            <a href={`mailto:${data.meta.email}`} className="resume-link">
+              <Mail size={12} /> {data.meta.email}
+            </a>
+          ) : null}
+          {((data.meta.emailVisivel !== false && data.meta.email?.trim()) && data.meta.githubVisivel !== false && data.meta.github?.trim()) ? (
+            <span className="divider" style={{ color: "var(--accent-color, #0f172a)" }}>|</span>
+          ) : null}
+          {(data.meta.githubVisivel !== false && (data.meta.github?.trim() || data.meta.githubTexto?.trim())) ? (
+            <a href={data.meta.github?.startsWith("http") ? data.meta.github : `https://${data.meta.github || ""}`} target="_blank" rel="noopener noreferrer" className="resume-link">
+              <Github size={12} /> {data.meta.githubTexto || data.meta.github}
+            </a>
+          ) : null}
+          {((data.meta.githubVisivel !== false && data.meta.github?.trim()) && data.meta.linkedinVisivel !== false && data.meta.linkedin?.trim()) ? (
+            <span className="divider" style={{ color: "var(--accent-color, #0f172a)" }}>|</span>
+          ) : null}
+          {(data.meta.linkedinVisivel !== false && (data.meta.linkedin?.trim() || data.meta.linkedinTexto?.trim())) ? (
+            <a href={data.meta.linkedin?.startsWith("http") ? data.meta.linkedin : `https://${data.meta.linkedin || ""}`} target="_blank" rel="noopener noreferrer" className="resume-link">
+              <Linkedin size={12} /> {data.meta.linkedinTexto || data.meta.linkedin}
+            </a>
           ) : null}
         </div>
         <hr style={{ borderColor: "var(--accent-color, #0f172a)" }} />

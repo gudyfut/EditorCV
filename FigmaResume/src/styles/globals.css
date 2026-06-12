@@ -987,6 +987,14 @@ body,
   letter-spacing: 0.06em;
 }
 
+.resume-cargo {
+  margin: 4px 0 10px;
+  font-size: calc(var(--resume-base-font-size, 12.5px) * 1.1 * var(--resume-font-scale));
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #4b5563;
+}
+
 .resume-header hr {
   border: none;
   border-top: 1px solid #000000;
@@ -1001,7 +1009,8 @@ body,
   font-size: 12.5px;
 }
 
-.resume-contact span {
+.resume-contact span,
+.resume-contact a {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -1009,6 +1018,15 @@ body,
 
 .resume-contact .divider {
   font-weight: 700;
+}
+
+.resume-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-link:hover {
+  text-decoration: underline;
 }
 
 .resume-section {
@@ -1171,7 +1189,8 @@ ul.resume-topic-list li:last-child {
     break-inside: avoid;
   }
 
-  .resume-name {
+  .resume-name,
+  .resume-cargo {
     page-break-after: avoid;
     break-after: avoid;
   }
@@ -1408,6 +1427,10 @@ ul.resume-topic-list li:last-child {
 
 .resume-name {
   font-size: calc(var(--resume-base-font-size, 12.5px) * 1.16 * var(--resume-font-scale) * var(--resume-heading-scale));
+}
+
+.resume-cargo {
+  font-size: calc(var(--resume-base-font-size, 12.5px) * 1.1 * var(--resume-font-scale));
 }
 
 .resume-section h2 {
