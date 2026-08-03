@@ -77,7 +77,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
               <section className="resume-section" key={section.id}>
                 <h2>{title}</h2>
                 {section.grupos.length > 0 ? (
-                  <ul>
+                  <ul className="resume-grouped-list">
                     {section.grupos.map((group, groupIndex) => (
                       <li key={`${group.label}-${groupIndex}`}>
                         <strong>{group.label || "Habilidade"}:</strong> {group.itens.length > 0 ? group.itens.join(", ") : <span style={{ color: "#d1d5db" }}>Item 1, Item 2...</span>}

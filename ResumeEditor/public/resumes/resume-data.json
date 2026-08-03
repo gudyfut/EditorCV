@@ -22,7 +22,7 @@
       "visivel": true,
       "ordem": 1,
       "titulo": "SOBRE",
-      "conteudo": "Estudante de Ciência da Computação na UNIFEI (7º período), com experiência em desenvolvimento backend, APIs REST e integração de sistemas. Já trabalhei com Python em produção e desenvolvi aplicações fullstack com deploy em AWS. Tenho facilidade para aprender novas tecnologias com rapidez e autonomia, e busco contribuir em times internacionais com proatividade e evolução constante."
+      "conteudo": "Estudante de Ciência da Computação na UNIFEI (7º período), experiência com automações Python em produção e desenvolvimento de aplicações fullstack (deploy em AWS). Apaixonado por inovação, tecnologia e aprendizado contínuo, em busca de contribuir em times internacionais com proatividade e evolução constante."
     },
     {
       "id": "skills",
@@ -61,7 +61,7 @@
         {
           "label": "IA no Desenvolvimento",
           "itens": [
-            "GitHub Copilot CLI",
+            "Codex CLI",
             "OpenCode com uso instruído e criterioso como suporte ao desenvolvimento"
           ]
         },

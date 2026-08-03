@@ -1,13 +1,18 @@
 {
   "meta": {
     "nome": "MURILO R. F. MONFERRARI",
-    "cargo": "CURRICULUM VITAE",
+    "cargo": "Computer Science Student",
     "telefone": "+55 (35) 999121807",
-    "email": "murilorfm@gmail.com"
+    "email": "murilorfm@gmail.com",
+    "github": "github.com/gudyfut",
+    "githubTexto": "gudyfut",
+    "linkedin": "www.linkedin.com/in/murilo-monferrari",
+    "linkedinTexto": "Murilo Monferrari"
   },
   "layout": {
+    "baseFontSize": 12.5,
     "fontScale": 1.2,
-    "headingScale": 1,
+    "headingScale": 1.15,
     "lineHeight": 1.35
   },
   "secoes": [
@@ -17,7 +22,7 @@
       "visivel": true,
       "ordem": 1,
       "titulo": "ABOUT",
-      "conteudo": "Computer Science student at UNIFEI (6th semester), with experience in backend development, REST APIs, and system integration. I have worked with Python in production and developed fullstack applications deployed on AWS. I have an ease for learning new technologies quickly and autonomously, and I seek to contribute to international teams with proactivity and continuous evolution."
+      "conteudo": "Computer Science student at UNIFEI (7th semester), with experience in production-grade Python automation and full-stack application development (AWS deployment). Passionate about innovation, technology, and continuous learning, seeking to contribute proactively to international teams while continuously growing."
     },
     {
       "id": "skills",
@@ -27,16 +32,16 @@
       "titulo": "SKILLS",
       "grupos": [
         {
-          "label": "Languages",
+          "label": "Programming Languages",
           "itens": [
-            "C",
             "Python",
             "JavaScript",
             "TypeScript",
             "Node.js",
             "SQL",
             "HTML",
-            "CSS"
+            "CSS",
+            "C"
           ]
         },
         {
@@ -56,22 +61,23 @@
         {
           "label": "AI in Development",
           "itens": [
-            "GitHub Copilot CLI",
-            "OpenCode with instructed and careful use to support development"
+            "Codex CLI",
+            "OpenCode used thoughtfully and responsibly to support software development"
           ]
         },
         {
           "label": "Languages",
           "itens": [
-            "Fluent English"
+            "Fluent English",
+            "Native Brazilian Portuguese"
           ]
         },
         {
-          "label": "Complementary Knowledge",
+          "label": "Additional Knowledge",
           "itens": [
-            "System integration",
-            "Process automation",
-            "Data analysis",
+            "Systems Integration",
+            "Process Automation",
+            "Data Analysis",
             "Machine Learning"
           ]
         }
@@ -86,7 +92,7 @@
       "itens": [
         {
           "id": "form_0",
-          "titulo": "Bachelor of Computer Science",
+          "titulo": "Bachelor's Degree in Computer Science",
           "descricao": "Federal University of Itajubá (UNIFEI)",
           "data": "01/2023 - 12/2026 • Currently Enrolled",
           "local": ""
@@ -102,16 +108,16 @@
       "itens": [
         {
           "id": "exp_0",
-          "titulo": "Fullstack Developer (Contractor)",
-          "descricao": "SIMCafé — Development of a complete internal system: structured backend architecture, REST API, PostgreSQL, AWS. React + Vite frontend; Node.js + Express + Prisma backend.",
-          "data": "",
+          "titulo": "Full-Stack Developer (Contractor)",
+          "descricao": "SIMCafé\nDevelopment of a complete internal system for coffee farm data collection and analysis.\nFrontend: React + Vite; Backend: Node.js + Express + Prisma; PostgreSQL, AWS",
+          "data": "11/2025 - Present",
           "local": ""
         },
         {
           "id": "exp_1",
-          "titulo": "Software Engineering Intern",
-          "descricao": "Golden Rastreamento — Development of system integrations via REST APIs in Python, including integration with chatbots and internal financial systems. Data analysis and processing for internal process automation.",
-          "data": "",
+          "titulo": "Software Development Intern",
+          "descricao": "Golden Rastreamento\nDevelopment of system integrations through REST APIs using Python, including integrations with chatbots and the company's financial systems. Data analysis and processing to automate internal processes.",
+          "data": "11/2024 - 04/2025",
           "local": ""
         }
       ]
@@ -121,14 +127,12 @@
       "tipo": "list",
       "visivel": true,
       "ordem": 5,
-      "titulo": "COMPETENCIES",
+      "titulo": "CORE COMPETENCIES",
       "itens": [
-        "Continuous learning and quick adaptation to new technologies and contexts",
+        "Continuous learning and quick adaptation to new technologies and environments",
         "Proactivity and autonomy in developing solutions and optimizing processes",
-        "Systemic and analytical vision for problem-solving",
-        "Clear communication and ease of collaborating with multidisciplinary teams",
-        "Emotional stability combined with seriousness in fulfilling responsibilities",
-        "Determination to add more value than expected"
+        "Analytical and systems-thinking approach to problem solving",
+        "Clear communication and effective collaboration within multidisciplinary teams"
       ]
     }
   ]
