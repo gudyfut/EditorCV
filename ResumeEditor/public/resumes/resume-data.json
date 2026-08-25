@@ -7,7 +7,9 @@
     "github": "github.com/gudyfut",
     "githubTexto": "gudyfut",
     "linkedin": "www.linkedin.com/in/murilo-monferrari",
-    "linkedinTexto": "Murilo Monferrari"
+    "linkedinTexto": "Murilo Monferrari",
+    "portfolio": "portfoliobenchmark.vercel.app",
+    "portfolioTexto": "Portfólio"
   },
   "layout": {
     "baseFontSize": 12.5,
@@ -22,7 +24,7 @@
       "visivel": true,
       "ordem": 1,
       "titulo": "SOBRE",
-      "conteudo": "Estudante de Ciência da Computação na UNIFEI (7º período), experiência com automações Python em produção e desenvolvimento de aplicações fullstack (deploy em AWS). Apaixonado por inovação, tecnologia e aprendizado contínuo, em busca de contribuir em times internacionais com proatividade e evolução constante."
+      "conteudo": "Estudante de Ciência da Computação na UNIFEI (8º período), apaixonado por programação, tecnologia e inteligência artificial. experiência com fluxos de agentes em automações, em produção e desenvolvimento de aplicações Fullstack. Em busca de contribuir em times internacionais com proatividade e evolução constante."
     },
     {
       "id": "skills",
@@ -32,22 +34,8 @@
       "titulo": "HABILIDADES",
       "grupos": [
         {
-          "label": "Linguagens",
-          "itens": [
-            "Python",
-            "JavaScript",
-            "TypeScript",
-            "Node.js",
-            "SQL",
-            "HTML",
-            "CSS",
-            "C"
-          ]
-        },
-        {
           "label": "Ferramentas & Stack",
           "itens": [
-            "REST APIs",
             "Express",
             "React",
             "Next.js",
@@ -55,14 +43,17 @@
             "PostgreSQL",
             "Docker",
             "Git",
-            "AWS"
+            "AWS",
+            "Nest.js",
+            "Vercel",
+            "Fastify"
           ]
         },
         {
-          "label": "IA no Desenvolvimento",
+          "label": "Coding Agents",
           "itens": [
             "Codex CLI",
-            "OpenCode com uso instruído e criterioso como suporte ao desenvolvimento"
+            "OpenCode"
           ]
         },
         {
@@ -72,12 +63,14 @@
           ]
         },
         {
-          "label": "Conhecimentos Complementares",
+          "label": "Conhecimentos",
           "itens": [
+            "Machine Learning",
+            "AI Agents",
             "Integração de sistemas",
-            "Automação de processos",
-            "Análise de dados",
-            "Machine Learning"
+            "Process Automation",
+            "Analise de Dados",
+            "DevOps"
           ]
         }
       ]
@@ -128,10 +121,10 @@
       "ordem": 5,
       "titulo": "COMPETÊNCIAS",
       "itens": [
-        "Aprendizado contínuo e rápida adaptação a novas tecnologias e contextos",
+        "Rápida adaptação a novas tecnologias e contextos, aprendizado constante",
         "Proatividade e autonomia no desenvolvimento de soluções e otimização de processos",
         "Visão sistêmica e analítica na resolução de problemas",
-        "Comunicação clara e facilidade para colaborar com times multidisciplinares"
+        "Comunicação clara e facilidade para colaborar com times multidisciplinares e internacionais"
       ]
     }
   ]

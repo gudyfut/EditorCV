@@ -1693,3 +1693,164 @@ textarea.form-control {
   padding: 16px 20px !important;
   border-radius: 14px !important;
 }
+
+/* --- Drag & drop (dnd-kit) helpers --- */
+.cv-sort-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  cursor: grab;
+  touch-action: none;
+  border-radius: 6px;
+  padding: 4px 3px;
+  flex-shrink: 0;
+}
+
+.cv-sort-handle:hover {
+  color: #1f5fbf;
+  background: #eef4ff;
+}
+
+.cv-sort-handle:active {
+  cursor: grabbing;
+}
+
+.sortable-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748b;
+  background: #f1f5f9;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+}
+
+.module-sortable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv-sortable-section {
+  position: relative;
+}
+
+.cv-sortable-section.is-dragging {
+  z-index: 60;
+}
+
+.cv-sortable-section.is-dragging .cv-editor-module {
+  border-color: #3b82f6;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+}
+
+.module-card-header {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.module-card-header [data-slot="accordion-header"],
+.module-card-header [data-slot="accordion-trigger"] {
+  flex: 1;
+  min-width: 0;
+}
+
+.module-card-header [data-slot="accordion-trigger"] {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.module-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.module-type-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #64748b;
+  background: #eef2f7;
+  border-radius: 999px;
+  padding: 3px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.module-card-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding-right: 4px;
+  flex-shrink: 0;
+}
+
+.cv-danger-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  background: #fff5f5;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cv-danger-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+}
+
+/* --- Sortable item cards --- */
+.item-card-header {
+  cursor: pointer;
+  user-select: none;
+  gap: 8px;
+}
+
+.item-card-title {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-card.is-dragging {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+}
+
+/* --- Sortable chips --- */
+.chip.is-dragging {
+  border-color: #3b82f6;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+  opacity: 0.95;
+  cursor: grabbing;
+}
+
+/* --- Portfolio line in resume header --- */
+.resume-contact-extra {
+  margin-top: 5px;
+  font-size: 12.5px;
+}
+

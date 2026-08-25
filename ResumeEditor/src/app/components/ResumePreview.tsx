@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Phone, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, Globe } from "lucide-react";
 import { ResumeData, ResumeSection } from "../types/resume";
 
 interface ResumePreviewProps {
@@ -57,6 +57,19 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
             </a>
           ) : null}
         </div>
+        {(data.meta.portfolioVisivel !== false && (data.meta.portfolio?.trim() || data.meta.portfolioTexto?.trim())) ? (
+          <div className="resume-contact resume-contact-extra">
+            <span style={{ fontWeight: 700, color: "var(--accent-color, #0f172a)" }}>Portfolio:</span>
+            <a
+              href={data.meta.portfolio?.startsWith("http") ? data.meta.portfolio : `https://${data.meta.portfolio || ""}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resume-link"
+            >
+              <Globe size={12} style={{ color: "var(--accent-color, #0f172a)" }} /> {data.meta.portfolioTexto || data.meta.portfolio}
+            </a>
+          </div>
+        ) : null}
         <hr style={{ borderColor: "var(--accent-color, #0f172a)" }} />
       </header>
 

@@ -7,7 +7,9 @@
     "github": "github.com/gudyfut",
     "githubTexto": "gudyfut",
     "linkedin": "www.linkedin.com/in/murilo-monferrari",
-    "linkedinTexto": "Murilo Monferrari"
+    "linkedinTexto": "Murilo Monferrari",
+    "portfolio": "portfoliobenchmark.vercel.app",
+    "portfolioTexto": "Portfolio"
   },
   "layout": {
     "baseFontSize": 12.5,
@@ -22,7 +24,7 @@
       "visivel": true,
       "ordem": 1,
       "titulo": "ABOUT",
-      "conteudo": "Computer Science student at UNIFEI (7th semester), with experience in production-grade Python automation and full-stack application development (AWS deployment). Passionate about innovation, technology, and continuous learning, seeking to contribute proactively to international teams while continuously growing."
+      "conteudo": "Computer Science student at UNIFEI (8th semester), passionate about programming, technology, and artificial intelligence. Experience with agent workflows in automations, as well as deploying and developing full-stack applications. Seeking to contribute to international teams with proactivity and continuous growth."
     },
     {
       "id": "skills",
@@ -32,22 +34,8 @@
       "titulo": "SKILLS",
       "grupos": [
         {
-          "label": "Programming Languages",
-          "itens": [
-            "Python",
-            "JavaScript",
-            "TypeScript",
-            "Node.js",
-            "SQL",
-            "HTML",
-            "CSS",
-            "C"
-          ]
-        },
-        {
           "label": "Tools & Stack",
           "itens": [
-            "REST APIs",
             "Express",
             "React",
             "Next.js",
@@ -55,30 +43,35 @@
             "PostgreSQL",
             "Docker",
             "Git",
-            "AWS"
+            "AWS",
+            "Nest.js",
+            "Vercel",
+            "Fastify"
           ]
         },
         {
-          "label": "AI in Development",
+          "label": "Coding Agents",
           "itens": [
             "Codex CLI",
-            "OpenCode used thoughtfully and responsibly to support software development"
+            "OpenCode"
           ]
         },
         {
           "label": "Languages",
           "itens": [
             "Fluent English",
-            "Native Brazilian Portuguese"
+            "Native Portuguese"
           ]
         },
         {
-          "label": "Additional Knowledge",
+          "label": "Knowledge",
           "itens": [
+            "Machine Learning",
+            "AI Agents",
             "Systems Integration",
             "Process Automation",
             "Data Analysis",
-            "Machine Learning"
+            "DevOps"
           ]
         }
       ]
@@ -109,14 +102,14 @@
         {
           "id": "exp_0",
           "titulo": "Full-Stack Developer (Contractor)",
-          "descricao": "SIMCafé\nDevelopment of a complete internal system for coffee farm data collection and analysis.\nFrontend: React + Vite; Backend: Node.js + Express + Prisma; PostgreSQL, AWS",
+          "descricao": "SIMCafé\nDevelopment of a complete internal system for entering and analyzing coffee farm data.\nFrontend: React + Vite; Backend: Node.js + Express + Prisma; PostgreSQL, AWS",
           "data": "11/2025 - Present",
           "local": ""
         },
         {
           "id": "exp_1",
           "titulo": "Software Development Intern",
-          "descricao": "Golden Rastreamento\nDevelopment of system integrations through REST APIs using Python, including integrations with chatbots and the company's financial systems. Data analysis and processing to automate internal processes.",
+          "descricao": "Golden Rastreamento\nDevelopment of system integrations via REST APIs in Python, including integrations with chatbots and the company's financial systems. Data analysis and processing for automating internal processes.",
           "data": "11/2024 - 04/2025",
           "local": ""
         }
@@ -129,10 +122,10 @@
       "ordem": 5,
       "titulo": "CORE COMPETENCIES",
       "itens": [
-        "Continuous learning and quick adaptation to new technologies and environments",
+        "Fast adaptation to new technologies and contexts, with constant learning",
         "Proactivity and autonomy in developing solutions and optimizing processes",
-        "Analytical and systems-thinking approach to problem solving",
-        "Clear communication and effective collaboration within multidisciplinary teams"
+        "Systemic and analytical approach to problem solving",
+        "Clear communication and ease of collaborating with multidisciplinary and international teams"
       ]
     }
   ]

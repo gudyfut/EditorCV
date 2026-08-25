@@ -7,10 +7,13 @@ export interface ResumeMeta {
   githubTexto: string;
   linkedin: string;
   linkedinTexto: string;
+  portfolio: string;
+  portfolioTexto: string;
   telefoneVisivel?: boolean;
   emailVisivel?: boolean;
   githubVisivel?: boolean;
   linkedinVisivel?: boolean;
+  portfolioVisivel?: boolean;
 }
 
 export interface BaseSection {
