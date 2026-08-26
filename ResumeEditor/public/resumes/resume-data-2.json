@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "nome": "MURILO R. F. MONFERRARI",
+    "cargo": "Estudante de Ciência da Computação",
+    "telefone": "+55 (35) 999121807",
+    "email": "murilorfm@gmail.com",
+    "github": "github.com/gudyfut",
+    "githubTexto": "gudyfut",
+    "linkedin": "www.linkedin.com/in/murilo-monferrari",
+    "linkedinTexto": "Murilo Monferrari",
+    "portfolio": "portfoliobenchmark.vercel.app",
+    "portfolioTexto": "Portfólio"
+  },
+  "layout": {
+    "baseFontSize": 12.5,
+    "fontScale": 1.2,
+    "headingScale": 1.15,
+    "lineHeight": 1.35
+  },
+  "secoes": [
+    {
+      "id": "sobre",
+      "tipo": "text",
+      "visivel": true,
+      "ordem": 1,
+      "titulo": "SOBRE",
+      "conteudo": "Estudante de Ciência da Computação na UNIFEI (8º período), apaixonado por programação, tecnologia e inteligência artificial. Experiência prática no desenvolvimento de sistemas Fullstack, automações e fluxos multiagentes de IA aplicados a produtos reais. Em busca de contribuir em times internacionais com proatividade e evolução constante."
+    },
+    {
+      "id": "skills",
+      "tipo": "grouped_list",
+      "visivel": true,
+      "ordem": 2,
+      "titulo": "HABILIDADES",
+      "grupos": [
+        {
+          "label": "Ferramentas & Stack",
+          "itens": [
+            "Express",
+            "React",
+            "Next.js",
+            "Prisma",
+            "PostgreSQL",
+            "Docker",
+            "Git",
+            "AWS",
+            "Nest.js",
+            "Vercel",
+            "Fastify"
+          ]
+        },
+        {
+          "label": "Coding Agents",
+          "itens": [
+            "Codex CLI",
+            "OpenCode"
+          ]
+        },
+        {
+          "label": "Idiomas",
+          "itens": [
+            "Inglês fluente"
+          ]
+        },
+        {
+          "label": "Conhecimentos",
+          "itens": [
+            "Machine Learning",
+            "AI Agents",
+            "Integração de sistemas",
+            "Process Automation",
+            "Analise de Dados",
+            "DevOps"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "formacao",
+      "tipo": "timeline",
+      "visivel": true,
+      "ordem": 3,
+      "titulo": "FORMAÇÃO",
+      "itens": [
+        {
+          "id": "form_0",
+          "titulo": "Bacharelado em Ciência da Computação",
+          "descricao": "Universidade Federal de Itajubá (UNIFEI)",
+          "data": "01/2023 - 12/2026 • Matriculado Atualmente",
+          "local": ""
+        }
+      ]
+    },
+    {
+      "id": "experiencia",
+      "tipo": "timeline",
+      "visivel": true,
+      "ordem": 4,
+      "titulo": "EXPERIÊNCIA",
+      "itens": [
+        {
+          "id": "exp_0",
+          "titulo": "Cofundador & Desenvolvedor de Sistemas com IA",
+          "descricao": "While Digital • Empresa em fase de fundação com outros três sócios\nDesenvolvimento de solucoes digitais B2B com IA e tecnologias atuais. um dos produtos sendo desenvolvidos consiste em um pipeline multiagente de IA: consulta uma base de CNPJs, qualifica empresas com maior aderência ao perfil-alvo e utiliza o Hermes Agent para pesquisar e estruturar dados sobre cada negócio. Os contextos coletados alimentam um Coding Agent que gera landing pages personalizadas publicadas automaticamente na Vercel com um link público.",
+          "data": "Presente",
+          "local": ""
+        },
+        {
+          "id": "exp_1",
+          "titulo": "Desenvolvedor Fullstack (Contractor)",
+          "descricao": "SIMCafé\nDesenvolvimento de sistema interno completo de inserção e analise de dados de fazendas de café\nFrontend React + Vite; Backend Node.js + Express + Prisma; PostgreSQL, AWS",
+          "data": "11/2025 - Presente",
+          "local": ""
+        },
+        {
+          "id": "exp_2",
+          "titulo": "Programador Estagiário",
+          "descricao": "Golden Rastreamento \nDesenvolvimento de integrações de sistemas via API REST em Python, incluindo integração com chatbots e sistemas financeiros da empresa. Análise e tratamento de dados para automação de processos internos.",
+          "data": "11/2024 - 04/2025",
+          "local": ""
+        }
+      ]
+    },
+    {
+      "id": "competencias",
+      "tipo": "list",
+      "visivel": true,
+      "ordem": 5,
+      "titulo": "COMPETÊNCIAS",
+      "itens": [
+        "Rápida adaptação a novas tecnologias e contextos, aprendizado constante",
+        "Proatividade e autonomia no desenvolvimento de soluções e otimização de processos",
+        "Visão sistêmica e analítica na resolução de problemas",
+        "Comunicação clara e facilidade para colaborar com times multidisciplinares e internacionais"
+      ]
+    }
+  ]
+}

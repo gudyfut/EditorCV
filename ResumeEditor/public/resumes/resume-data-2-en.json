@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "nome": "MURILO R. F. MONFERRARI",
+    "cargo": "Computer Science Student",
+    "telefone": "+55 (35) 999121807",
+    "email": "murilorfm@gmail.com",
+    "github": "github.com/gudyfut",
+    "githubTexto": "gudyfut",
+    "linkedin": "www.linkedin.com/in/murilo-monferrari",
+    "linkedinTexto": "Murilo Monferrari",
+    "portfolio": "portfoliobenchmark.vercel.app",
+    "portfolioTexto": "Portfolio"
+  },
+  "layout": {
+    "baseFontSize": 12.5,
+    "fontScale": 1.2,
+    "headingScale": 1.15,
+    "lineHeight": 1.35
+  },
+  "secoes": [
+    {
+      "id": "sobre",
+      "tipo": "text",
+      "visivel": true,
+      "ordem": 1,
+      "titulo": "ABOUT",
+      "conteudo": "Computer Science student at UNIFEI (8th semester), passionate about programming, technology, and artificial intelligence. Hands-on experience developing full-stack systems, automations, and multi-agent AI workflows applied to real-world products. Seeking to contribute to international teams with proactivity and continuous growth."
+    },
+    {
+      "id": "skills",
+      "tipo": "grouped_list",
+      "visivel": true,
+      "ordem": 2,
+      "titulo": "SKILLS",
+      "grupos": [
+        {
+          "label": "Tools & Stack",
+          "itens": [
+            "Express",
+            "React",
+            "Next.js",
+            "Prisma",
+            "PostgreSQL",
+            "Docker",
+            "Git",
+            "AWS",
+            "Nest.js",
+            "Vercel",
+            "Fastify"
+          ]
+        },
+        {
+          "label": "Coding Agents",
+          "itens": [
+            "Codex CLI",
+            "OpenCode"
+          ]
+        },
+        {
+          "label": "Languages",
+          "itens": [
+            "Fluent English"
+          ]
+        },
+        {
+          "label": "Knowledge",
+          "itens": [
+            "Machine Learning",
+            "AI Agents",
+            "Systems Integration",
+            "Process Automation",
+            "Data Analysis",
+            "DevOps"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "formacao",
+      "tipo": "timeline",
+      "visivel": true,
+      "ordem": 3,
+      "titulo": "EDUCATION",
+      "itens": [
+        {
+          "id": "form_0",
+          "titulo": "Bachelor's Degree in Computer Science",
+          "descricao": "Federal University of Itajubá (UNIFEI)",
+          "data": "01/2023 - 12/2026 • Currently Enrolled",
+          "local": ""
+        }
+      ]
+    },
+    {
+      "id": "experiencia",
+      "tipo": "timeline",
+      "visivel": true,
+      "ordem": 4,
+      "titulo": "EXPERIENCE",
+      "itens": [
+        {
+          "id": "exp_0",
+          "titulo": "Co-Founder & AI Systems Developer",
+          "descricao": "While Digital • Early-stage company being founded with three partners\nDevelopment of B2B digital solutions using AI and modern technologies. One of the products under development consists of a multi-agent AI pipeline that queries a Brazilian company registration (CNPJ) database, qualifies companies based on their fit with the target customer profile, and uses Hermes Agent to research and structure data about each business. The collected context is passed to a Coding Agent, which generates personalized landing pages that are automatically deployed to Vercel with a public URL.",
+          "data": "Present",
+          "local": ""
+        },
+        {
+          "id": "exp_1",
+          "titulo": "Full-Stack Developer (Contractor)",
+          "descricao": "SIMCafé\nDevelopment of a complete internal system for entering and analyzing coffee farm data.\nFrontend: React + Vite; Backend: Node.js + Express + Prisma; PostgreSQL, AWS",
+          "data": "11/2025 - Present",
+          "local": ""
+        },
+        {
+          "id": "exp_2",
+          "titulo": "Software Development Intern",
+          "descricao": "Golden Rastreamento\nDevelopment of system integrations via REST APIs in Python, including integrations with chatbots and the company's financial systems. Data analysis and processing for automating internal processes.",
+          "data": "11/2024 - 04/2025",
+          "local": ""
+        }
+      ]
+    },
+    {
+      "id": "competencias",
+      "tipo": "list",
+      "visivel": true,
+      "ordem": 5,
+      "titulo": "CORE COMPETENCIES",
+      "itens": [
+        "Fast adaptation to new technologies and contexts, with constant learning",
+        "Proactivity and autonomy in developing solutions and optimizing processes",
+        "Systemic and analytical approach to problem solving",
+        "Clear communication and ease of collaborating with multidisciplinary and international teams"
+      ]
+    }
+  ]
+}
