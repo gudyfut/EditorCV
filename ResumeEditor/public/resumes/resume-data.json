@@ -1,7 +1,7 @@
 {
   "meta": {
     "nome": "MURILO R. F. MONFERRARI",
-    "cargo": "Estudante de Ciência da Computação",
+    "cargo": "Desenvolvedor Full-stack | Inteligência Artificial",
     "telefone": "+55 (35) 999121807",
     "email": "murilorfm@gmail.com",
     "github": "github.com/gudyfut",
@@ -12,64 +12,81 @@
     "portfolioTexto": "Portfólio"
   },
   "layout": {
-    "baseFontSize": 12.5,
+    "baseFontSize": 11,
     "fontScale": 1.2,
     "headingScale": 1.15,
     "lineHeight": 1.35
   },
   "secoes": [
     {
-      "id": "sobre",
+      "id": "objetivo",
       "tipo": "text",
       "visivel": true,
       "ordem": 1,
-      "titulo": "SOBRE",
-      "conteudo": "Estudante de Ciência da Computação na UNIFEI (8º período), apaixonado por programação, tecnologia e inteligência artificial. experiência com fluxos de agentes em automações, em produção e desenvolvimento de aplicações Fullstack. Em busca de contribuir em times internacionais com proatividade e evolução constante."
+      "titulo": "OBJETIVO PROFISSIONAL",
+      "conteudo": "Atuar como desenvolvedor full-stack em equipes internacionais, com foco em integração de inteligência artificial a sistemas e automação de workflows."
+    },
+    {
+      "id": "sobre",
+      "tipo": "text",
+      "visivel": true,
+      "ordem": 2,
+      "titulo": "RESUMO PROFISSIONAL",
+      "conteudo": "Estudante de Ciência da Computação na UNIFEI (8º período), com experiência em aplicações full-stack, integrações via APIs REST e automação de processos. Desenvolvo sistemas com React, Node.js, Python e PostgreSQL e soluções B2B com workflows multiagentes de IA. Conhecimentos em Machine Learning e estudo contínuo de arquiteturas, estruturas e ferramentas para desenvolvimento de sistemas full-stack."
     },
     {
       "id": "skills",
       "tipo": "grouped_list",
       "visivel": true,
-      "ordem": 2,
-      "titulo": "HABILIDADES",
+      "ordem": 5,
+      "titulo": "CONHECIMENTOS TÉCNICOS",
       "grupos": [
         {
-          "label": "Ferramentas & Stack",
+          "label": "Frontend",
           "itens": [
-            "Express",
             "React",
             "Next.js",
-            "Prisma",
-            "PostgreSQL",
-            "Docker",
-            "Git",
-            "AWS",
-            "Nest.js",
-            "Vercel",
-            "Fastify"
+            "Vite"
           ]
         },
         {
-          "label": "Coding Agents",
+          "label": "Backend e dados",
           "itens": [
+            "Node.js",
+            "Python",
+            "Express",
+            "NestJS",
+            "Fastify",
+            "Prisma",
+            "PostgreSQL"
+          ]
+        },
+        {
+          "label": "Infraestrutura e versionamento",
+          "itens": [
+            "Docker",
+            "Git",
+            "AWS",
+            "Vercel"
+          ]
+        },
+        {
+          "label": "IA e automação",
+          "itens": [
+            "Workflows multiagentes",
+            "Integração de IA a sistemas",
+            "Hermes Agent",
             "Codex CLI",
             "OpenCode"
           ]
         },
         {
-          "label": "Idiomas",
+          "label": "Áreas de conhecimento",
           "itens": [
-            "Inglês fluente"
-          ]
-        },
-        {
-          "label": "Conhecimentos",
-          "itens": [
-            "Machine Learning",
-            "AI Agents",
-            "Integração de sistemas",
-            "Process Automation",
-            "Analise de Dados",
+            "Integração de sistemas via APIs REST",
+            "Automação de processos",
+            "Análise de dados",
+            "Machine Learning (aprendizado de máquina)",
             "DevOps"
           ]
         }
@@ -79,14 +96,14 @@
       "id": "formacao",
       "tipo": "timeline",
       "visivel": true,
-      "ordem": 3,
-      "titulo": "FORMAÇÃO",
+      "ordem": 6,
+      "titulo": "FORMAÇÃO ACADÊMICA",
       "itens": [
         {
           "id": "form_0",
-          "titulo": "Bacharelado em Ciência da Computação",
+          "titulo": "Bacharelado em Ciência da Computação (em andamento)",
           "descricao": "Universidade Federal de Itajubá (UNIFEI)",
-          "data": "01/2023 - 12/2026 • Matriculado Atualmente",
+          "data": "01/2023 - 12/2026 (previsão)",
           "local": ""
         }
       ]
@@ -95,36 +112,49 @@
       "id": "experiencia",
       "tipo": "timeline",
       "visivel": true,
-      "ordem": 4,
-      "titulo": "EXPERIÊNCIA",
+      "ordem": 3,
+      "titulo": "EXPERIÊNCIA PROFISSIONAL",
       "itens": [
         {
           "id": "exp_0",
-          "titulo": "Desenvolvedor Fullstack (Contractor)",
-          "descricao": "SIMCafé\nDesenvolvimento de sistema interno completo de inserção e analise de dados de fazendas de café\nFrontend React + Vite; Backend Node.js + Express + Prisma; PostgreSQL, AWS",
-          "data": "11/2025 - Presente",
+          "titulo": "Desenvolvedor Full-stack (prestador de serviços)",
+          "descricao": "SIMCafé\nDesenvolvo continuamente um sistema para registro de dados de consultas às fazendas de café, análise e dashboards. A solução apoia a visão dos funcionários sobre as fazendas, a tomada de decisões e o feedback aos clientes. Utilizo React, Vite, Node.js, Express, Prisma, PostgreSQL e AWS.",
+          "data": "11/2025 - Atual",
           "local": ""
         },
         {
           "id": "exp_1",
           "titulo": "Programador Estagiário",
-          "descricao": "Golden Rastreamento \nDesenvolvimento de integrações de sistemas via API REST em Python, incluindo integração com chatbots e sistemas financeiros da empresa. Análise e tratamento de dados para automação de processos internos.",
+          "descricao": "Golden Rastreamento\nDesenvolvi integrações via APIs REST em Python, conectando chatbots e sistemas financeiros da empresa. Analisei e tratei dados para automatizar processos internos.",
           "data": "11/2024 - 04/2025",
           "local": ""
         }
       ]
     },
     {
-      "id": "competencias",
+      "id": "projetos",
+      "tipo": "timeline",
+      "visivel": true,
+      "ordem": 4,
+      "titulo": "PROJETOS E EMPREENDEDORISMO",
+      "itens": [
+        {
+          "id": "proj_0",
+          "titulo": "Cofundador e desenvolvedor de sistemas com IA",
+          "descricao": "While Digital • Empresa em fase de fundação com outros três sócios\nDesenvolvo soluções digitais B2B com IA, incluindo um pipeline multiagente em desenvolvimento. O fluxo consulta uma base de CNPJs, qualifica empresas por aderência ao perfil-alvo e utiliza o Hermes Agent para pesquisar e estruturar dados. Os contextos alimentam um agente de programação para gerar landing pages personalizadas, com publicação automática na Vercel e link público.",
+          "data": "Atual",
+          "local": ""
+        }
+      ]
+    },
+    {
+      "id": "idiomas",
       "tipo": "list",
       "visivel": true,
-      "ordem": 5,
-      "titulo": "COMPETÊNCIAS",
+      "ordem": 7,
+      "titulo": "IDIOMAS",
       "itens": [
-        "Rápida adaptação a novas tecnologias e contextos, aprendizado constante",
-        "Proatividade e autonomia no desenvolvimento de soluções e otimização de processos",
-        "Visão sistêmica e analítica na resolução de problemas",
-        "Comunicação clara e facilidade para colaborar com times multidisciplinares e internacionais"
+        "Inglês: fluente"
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
   "meta": {
     "nome": "MURILO R. F. MONFERRARI",
-    "cargo": "Computer Science Student",
+    "cargo": "Full-Stack Developer | Artificial Intelligence",
     "telefone": "+55 (35) 999121807",
     "email": "murilorfm@gmail.com",
     "github": "github.com/gudyfut",
@@ -12,65 +12,81 @@
     "portfolioTexto": "Portfolio"
   },
   "layout": {
-    "baseFontSize": 12.5,
+    "baseFontSize": 11,
     "fontScale": 1.2,
     "headingScale": 1.15,
     "lineHeight": 1.35
   },
   "secoes": [
     {
-      "id": "sobre",
+      "id": "objetivo",
       "tipo": "text",
       "visivel": true,
       "ordem": 1,
-      "titulo": "ABOUT",
-      "conteudo": "Computer Science student at UNIFEI (8th semester), passionate about programming, technology, and artificial intelligence. Experience with agent workflows in automations, as well as deploying and developing full-stack applications. Seeking to contribute to international teams with proactivity and continuous growth."
+      "titulo": "PROFESSIONAL OBJECTIVE",
+      "conteudo": "Work as a full-stack developer in international teams, focusing on integrating artificial intelligence into software systems and automating workflows."
+    },
+    {
+      "id": "sobre",
+      "tipo": "text",
+      "visivel": true,
+      "ordem": 2,
+      "titulo": "PROFESSIONAL SUMMARY",
+      "conteudo": "Computer Science student at UNIFEI (8th semester) with experience in full-stack applications, REST API integrations, and process automation. Develop systems with React, Node.js, Python, and PostgreSQL and B2B solutions with multi-agent AI workflows. Knowledge of Machine Learning and ongoing study of architectures, structures, and tools for full-stack software development."
     },
     {
       "id": "skills",
       "tipo": "grouped_list",
       "visivel": true,
-      "ordem": 2,
-      "titulo": "SKILLS",
+      "ordem": 5,
+      "titulo": "TECHNICAL SKILLS",
       "grupos": [
         {
-          "label": "Tools & Stack",
+          "label": "Frontend",
           "itens": [
-            "Express",
             "React",
             "Next.js",
-            "Prisma",
-            "PostgreSQL",
-            "Docker",
-            "Git",
-            "AWS",
-            "Nest.js",
-            "Vercel",
-            "Fastify"
+            "Vite"
           ]
         },
         {
-          "label": "Coding Agents",
+          "label": "Backend and data",
           "itens": [
+            "Node.js",
+            "Python",
+            "Express",
+            "NestJS",
+            "Fastify",
+            "Prisma",
+            "PostgreSQL"
+          ]
+        },
+        {
+          "label": "Infrastructure and version control",
+          "itens": [
+            "Docker",
+            "Git",
+            "AWS",
+            "Vercel"
+          ]
+        },
+        {
+          "label": "AI and automation",
+          "itens": [
+            "Multi-agent workflows",
+            "AI integration into software systems",
+            "Hermes Agent",
             "Codex CLI",
             "OpenCode"
           ]
         },
         {
-          "label": "Languages",
+          "label": "Areas of knowledge",
           "itens": [
-            "Fluent English",
-            "Native Portuguese"
-          ]
-        },
-        {
-          "label": "Knowledge",
-          "itens": [
+            "Systems integration through REST APIs",
+            "Process automation",
+            "Data analysis",
             "Machine Learning",
-            "AI Agents",
-            "Systems Integration",
-            "Process Automation",
-            "Data Analysis",
             "DevOps"
           ]
         }
@@ -80,14 +96,14 @@
       "id": "formacao",
       "tipo": "timeline",
       "visivel": true,
-      "ordem": 3,
+      "ordem": 6,
       "titulo": "EDUCATION",
       "itens": [
         {
           "id": "form_0",
-          "titulo": "Bachelor's Degree in Computer Science",
+          "titulo": "Bachelor's Degree in Computer Science (in progress)",
           "descricao": "Federal University of Itajubá (UNIFEI)",
-          "data": "01/2023 - 12/2026 • Currently Enrolled",
+          "data": "01/2023 - 12/2026 (expected)",
           "local": ""
         }
       ]
@@ -96,36 +112,50 @@
       "id": "experiencia",
       "tipo": "timeline",
       "visivel": true,
-      "ordem": 4,
-      "titulo": "EXPERIENCE",
+      "ordem": 3,
+      "titulo": "PROFESSIONAL EXPERIENCE",
       "itens": [
         {
           "id": "exp_0",
           "titulo": "Full-Stack Developer (Contractor)",
-          "descricao": "SIMCafé\nDevelopment of a complete internal system for entering and analyzing coffee farm data.\nFrontend: React + Vite; Backend: Node.js + Express + Prisma; PostgreSQL, AWS",
+          "descricao": "SIMCafé\nContinuously develop a system for recording data from coffee farm consultations, analysis, and dashboards. The solution gives staff visibility into farm data and supports decision-making and feedback to clients. Use React, Vite, Node.js, Express, Prisma, PostgreSQL, and AWS.",
           "data": "11/2025 - Present",
           "local": ""
         },
         {
           "id": "exp_1",
           "titulo": "Software Development Intern",
-          "descricao": "Golden Rastreamento\nDevelopment of system integrations via REST APIs in Python, including integrations with chatbots and the company's financial systems. Data analysis and processing for automating internal processes.",
+          "descricao": "Golden Rastreamento\nDeveloped integrations through REST APIs in Python, connecting chatbots and the company's financial systems. Analyzed and processed data to automate internal processes.",
           "data": "11/2024 - 04/2025",
           "local": ""
         }
       ]
     },
     {
-      "id": "competencias",
+      "id": "projetos",
+      "tipo": "timeline",
+      "visivel": true,
+      "ordem": 4,
+      "titulo": "PROJECTS AND ENTREPRENEURSHIP",
+      "itens": [
+        {
+          "id": "proj_0",
+          "titulo": "Co-founder and AI Systems Developer",
+          "descricao": "While Digital • Company being founded with three other partners\nDevelop B2B digital solutions with AI, including a multi-agent pipeline under development. The workflow queries a database of Brazilian company registration numbers (CNPJs), qualifies companies against a target profile, and uses Hermes Agent to research and structure business data. The resulting context feeds a coding agent to generate personalized landing pages, with automated deployment to Vercel and a public link.",
+          "data": "Present",
+          "local": ""
+        }
+      ]
+    },
+    {
+      "id": "idiomas",
       "tipo": "list",
       "visivel": true,
-      "ordem": 5,
-      "titulo": "CORE COMPETENCIES",
+      "ordem": 7,
+      "titulo": "LANGUAGES",
       "itens": [
-        "Fast adaptation to new technologies and contexts, with constant learning",
-        "Proactivity and autonomy in developing solutions and optimizing processes",
-        "Systemic and analytical approach to problem solving",
-        "Clear communication and ease of collaborating with multidisciplinary and international teams"
+        "English: fluent",
+        "Portuguese: native"
       ]
     }
   ]
