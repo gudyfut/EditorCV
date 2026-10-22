@@ -1,0 +1,4 @@
+interface:
+  display_name: "Currículos do EditorCV"
+  short_description: "Crie e edite JSONs de currículo, inclusive de PDFs"
+  default_prompt: "Use $editorcv-resume para criar meu currículo em JSON a partir do PDF em input/resumes e exportar o resultado."

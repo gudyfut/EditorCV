@@ -1,0 +1,34 @@
+{
+  "$schema": "../schemas/resume.schema.json",
+  "meta": {
+    "nome": "",
+    "cargo": "",
+    "telefone": "",
+    "email": "",
+    "github": "",
+    "githubTexto": "",
+    "linkedin": "",
+    "linkedinTexto": "",
+    "portfolio": "",
+    "portfolioTexto": ""
+  },
+  "layout": {
+    "fontFamily": "system",
+    "baseFontSize": 12.5,
+    "fontScale": 1,
+    "headingScale": 1,
+    "lineHeight": 1.35,
+    "pageMargin": 14,
+    "sectionSpacing": 14,
+    "itemSpacing": 6,
+    "accentColor": "#0f172a",
+    "textAlign": "justify"
+  },
+  "secoes": [
+    { "id": "sobre", "tipo": "text", "visivel": false, "ordem": 1, "titulo": "RESUMO PROFISSIONAL", "conteudo": "" },
+    { "id": "experiencia", "tipo": "timeline", "visivel": false, "ordem": 2, "titulo": "EXPERIÊNCIA PROFISSIONAL", "itens": [] },
+    { "id": "formacao", "tipo": "timeline", "visivel": false, "ordem": 3, "titulo": "FORMAÇÃO", "itens": [] },
+    { "id": "habilidades", "tipo": "grouped_list", "visivel": false, "ordem": 4, "titulo": "HABILIDADES", "grupos": [] },
+    { "id": "idiomas", "tipo": "list", "visivel": false, "ordem": 5, "titulo": "IDIOMAS", "itens": [] }
+  ]
+}

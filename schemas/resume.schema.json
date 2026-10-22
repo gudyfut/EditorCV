@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Currículo EditorCV",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "secoes"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nome"],
+      "properties": {
+        "nome": { "type": "string" },
+        "cargo": { "type": "string" },
+        "telefone": { "type": "string" },
+        "email": { "type": "string" },
+        "github": { "type": "string" },
+        "githubTexto": { "type": "string" },
+        "linkedin": { "type": "string" },
+        "linkedinTexto": { "type": "string" },
+        "portfolio": { "type": "string" },
+        "portfolioTexto": { "type": "string" },
+        "telefoneVisivel": { "type": "boolean" },
+        "emailVisivel": { "type": "boolean" },
+        "githubVisivel": { "type": "boolean" },
+        "linkedinVisivel": { "type": "boolean" },
+        "portfolioVisivel": { "type": "boolean" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fontFamily": { "enum": ["system", "arial", "calibri", "segoe-ui", "verdana", "trebuchet", "georgia", "cambria", "times", "courier"] },
+        "baseFontSize": { "type": "number", "minimum": 8, "maximum": 24 },
+        "fontScale": { "type": "number", "minimum": 0.5, "maximum": 2 },
+        "headingScale": { "type": "number", "minimum": 0.5, "maximum": 2 },
+        "lineHeight": { "type": "number", "minimum": 1, "maximum": 2 },
+        "pageMargin": { "type": "number", "minimum": 5, "maximum": 30 },
+        "sectionSpacing": { "type": "number", "minimum": 0, "maximum": 40 },
+        "itemSpacing": { "type": "number", "minimum": 0, "maximum": 24 },
+        "accentColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+        "textAlign": { "enum": ["left", "justify"] }
+      }
+    },
+    "secoes": { "type": "array", "items": { "$ref": "#/definitions/section" } }
+  },
+  "definitions": {
+    "timelineItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "titulo"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "titulo": { "type": "string" },
+        "descricao": { "type": "string" },
+        "data": { "type": "string" },
+        "local": { "type": "string" },
+        "dataVisivel": { "type": "boolean" },
+        "localVisivel": { "type": "boolean" }
+      }
+    },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "itens"],
+      "properties": {
+        "label": { "type": "string" },
+        "itens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "tipo", "visivel", "ordem"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "tipo": { "enum": ["text", "list", "grouped_list", "timeline"] },
+        "visivel": { "type": "boolean" },
+        "ordem": { "type": "integer", "minimum": 0 },
+        "titulo": { "type": "string" },
+        "conteudo": { "type": "string" },
+        "itens": { "type": "array" },
+        "grupos": { "type": "array", "items": { "$ref": "#/definitions/group" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "tipo": { "const": "text" } } },
+          "then": { "required": ["conteudo"], "properties": { "itens": false, "grupos": false } }
+        },
+        {
+          "if": { "properties": { "tipo": { "const": "list" } } },
+          "then": { "required": ["itens"], "properties": { "itens": { "type": "array", "items": { "type": "string" } }, "conteudo": false, "grupos": false } }
+        },
+        {
+          "if": { "properties": { "tipo": { "const": "grouped_list" } } },
+          "then": { "required": ["grupos"], "properties": { "conteudo": false, "itens": false } }
+        },
+        {
+          "if": { "properties": { "tipo": { "const": "timeline" } } },
+          "then": { "required": ["itens"], "properties": { "itens": { "type": "array", "items": { "$ref": "#/definitions/timelineItem" } }, "conteudo": false, "grupos": false } }
+        }
+      ]
+    }
+  }
+}

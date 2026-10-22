@@ -44,3 +44,11 @@ coverage/
 # EditorCV specific
 uploads/
 *.pdf
+
+# Personal resume sources, JSONs and generated files
+/input/resumes/*
+!/input/resumes/README.md
+/resumes/*
+!/resumes/README.md
+/output/resumes/*
+!/output/resumes/README.md
